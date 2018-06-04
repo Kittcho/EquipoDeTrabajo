@@ -1,0 +1,561 @@
+<!doctype html public "-//w3c//dtd html 4.0 Transitional//en">
+<html>
+<head>
+  <title>Samples Overview - dotConnect for PostgreSQL</title>
+
+  <style>
+  body {
+    overflow: hidden;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: #ffffff;
+    color: #000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 70%;
+    width: 100%;
+    }
+  p
+    {
+    margin: .5em 0em .5em 0em;
+    }
+  ol, ul
+    {
+    margin-top: .5em;
+    }
+  li
+    {
+    margin-bottom: .5em;
+    }
+  ul p, ol p, dl p
+    {
+    margin-left: 0em;
+    }
+  blockquote.dxOverload
+    {
+    margin: .5em 1.5em .5em 1.5em;
+    }
+  h1, h2, h3, h4
+    {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    margin-bottom: .4em;
+    margin-top: 1em;
+    font-weight: bold;
+    }
+  h1
+    {
+    font-size: 120%;
+    margin-top: 0em;
+    }
+  h2
+    {
+    font-size: 130%;
+    }
+  h3
+    {
+    font-size: 115%;
+    }
+  h4
+    {
+    font-size: 100%;
+    }
+  .dxH1, .dxH2, .dxH3, .dxH4
+    {
+    margin-left: -18px;
+    }
+  A
+    {
+    color: #0000FF;
+    }
+  A:link
+    {
+    color: #0000FF;
+    }
+  A:active
+    {
+    color: #000080;
+    }
+  A:visited
+    {
+    color: #800080;
+    }
+  A:hover
+    {
+    color: #FF0000;
+    }
+  pre
+    {
+    font-family: Courier New;
+    font-size: 9pt;
+    color: #000060;
+    margin-top: 0px;
+    }
+  code, p.example, p.sourcecode, table.sourcecode, tr.sourcecode, td.sourcecode
+    {
+    font-family: Courier New;
+    font-size: 9pt;
+    color: #000060;
+    }
+  div#pagetop {
+    margin: 0px;
+    padding: 0px;
+    background-color: #99ccff;
+    height: 44;
+    width: 100%;
+    border-bottom: 1px solid #999999;
+    }
+  div#pagebody {
+    margin: 0px 0px 0px 0px;
+    padding: 5px 10px 0px 22px;
+    height: 90%;
+    width: 100%;
+    overflow: auto;
+    background-color: #FFFFFF;
+    vertical-align: top;
+    }
+  table#BannerTable
+    {
+    width: 100%;
+    height: 100%;
+    border-collapse:collapse;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+  table#BannerTable td
+    {
+    padding-left: 8px;
+    padding-right: 8px;
+    }
+  tr#BannerTopRow
+    {
+    font-style: italic;
+    font-size: 70%;
+    }
+  tr#Banner2ndRow
+    {
+    font-weight: bold;
+    font-size: 80%;
+    }
+  table.filtereditemlisttable, table.xmldoctable
+    {
+    width: 95%;
+    margin-top: .6em;
+    margin-bottom: .3em;
+    border-width: 1px 1px 0px 0px;
+    border-style: solid;
+    border-color: #999999;
+    background-color: #999999;
+    font-size: 100%;
+    border-collapse:collapse;
+    }
+  table.filtereditemlisttable th, table.filtereditemlisttable td, table.xmldoctable th, table.xmldoctable td
+    {
+    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-color: #999999;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: top;
+    }
+  table.filtereditemlisttable th, table.xmldoctable th
+    {
+    background: #cccccc;
+    vertical-align: bottom;
+    }
+  table.filtereditemlisttable td, table.xmldoctable td
+    {
+    background-color: #ffffff;
+    vertical-align: top;
+    }
+  </style>
+
+<script>
+
+var Engine;
+var enOpera = 'Opera';
+var enIE = 'IE';
+var enGecko = 'Gecko';
+
+function TestEngine()
+{
+  if (document.all) {
+    if (window.opera) {
+      Engine = enOpera;
+    }
+    else {
+      Engine = enIE;
+    }
+  }
+  else {
+    Engine = enGecko;
+  }
+}
+
+function RunningInCHM()
+{
+  var wstr = document.location.href.substr(0,14);
+  return (wstr == 'mk:@MSITStore:');
+}
+
+
+function RunningInHxS()
+{
+  var wstr = document.location.href.substr(0,10);
+  return (wstr == 'ms-help://');
+}
+
+
+function RunningInHost()
+{
+  return RunningInCHM() || RunningInHxS();
+}
+
+function HostOrNot(ifhost, ifnothost)
+{
+  if (RunningInHost()) {
+    document.write(ifhost);
+  } else {
+    document.write(ifnothost);
+  }
+}//HostOrNot
+
+function AdjustContentSize()
+{
+  var cDiv = document.getElementById("pagebody");
+  if ((Engine == enGecko)||(Engine == enOpera))//amend padding
+    {
+      var w = document.body.clientWidth;
+      cDiv.style.width = w - 32;
+    }
+  var h = document.body.clientHeight;
+  var diff = 44;
+  if ((Engine == enGecko)||(Engine == enOpera)) diff = diff + 6;
+  cDiv.style.height = h - diff;
+}
+
+
+function Startup()
+{
+  //add startup code here
+}
+</script>
+
+</head>
+
+
+<body onresize="AdjustContentSize()" onload="Startup()">
+
+<div id="pagetop">
+  <table id="BannerTable">
+    <tr id="BannerTopRow">
+      <td>dotConnect for PostgreSQL</td>
+      <td align="right">support@devart.com</td>
+</tr>
+    <tr id="Banner2ndRow">
+      <td>Samples Overview</td>
+      <td>&nbsp;</td>
+
+</tr>
+  </table>
+</div>
+
+<div id="pagebody">
+<!-- begin content -->
+
+<p>
+dotConnect for PostgreSQL samples are divided into 6 categories: General demos, Entity Framework samples, LinqConnect samples, Web demos, Web Service sample, and the CRM demo project.
+You can open all of them from the Start menu group. The General samples demonstrate how to work with components, classes, technologies, and also the usage of individual
+data access features, Web samples show how to use dotConnect for PostgreSQL in ASP.NET environment, and the CRM
+demo shows some good design and implementation practices that you can employ with dotConnect for PostgreSQL.
+</p>
+
+<p>
+<b>Note:</b> in the Standard, Mobile, and Express editions of dotConnect for PostgreSQL some samples are not available.
+</p>
+
+<a name="general"></a><h4 class="dxH4">General Samples</h4>
+
+<p>
+General samples are demos that demonstrate working with dotConnect for PostgreSQL classes, components, and technologies.
+</p>
+
+<p>
+Use the Start menu group to open General samples in the language you prefer. You can also run the
+compiled binary, which incorporates all General samples and provides quick access to C# source,
+necessary SQL scripts, and run-time state.
+</p>
+
+<table class="xmldoctable" cellspacing="0">
+
+<tr>
+  <th width=15%>Sample</th>
+  <th>Description</th>
+</tr>
+
+<tr>
+<td><b>Crystal</b></td>
+<td>This sample project demonstrates using dotConnect for PostgreSQL for generating reports with Crystal Reports. Be aware that this project requires Crystal Reports, which is no longer included with Visual Studio 2010 and higher. You have to download and install Crystal Reports separately: <a href="http://scn.sap.com/docs/DOC-7824">http://scn.sap.com/docs/DOC-7824</a> . Then update references to the CrystalDecisions.* assemblies and rebuild the solution.</td>
+</tr>
+
+<tr>
+<td><b>DataReader</b></td>
+<td>This sample project demonstrates using PgSqlDataReader class to obtain data from a query. The sample executes SQL statement at the PgSqlCommand and gets PgSqlDataReader to retrieve data.</td>
+</tr>
+
+<tr>
+<td><b>DataSet</b></td>
+<td>This sample project demonstrates using untyped dataset with dotConnect for PostgreSQL to review and update data. The sample uses a PgSqlDataAdapter component to fill a dataset and post updated data to a PostgresSQL database. The PgSqlDataAdapter component uses the PgSqlCommandBuilder class to automatically generate SQL for INSERT/UPDATE/DELETE operations.</td>
+</tr>
+
+<tr>
+<td><b>DbDataTable</b></td>
+<td>This sample project demonstrates data mapping from PostgresSQL tables and paginal access. The sample uses a PgSqlDataTable component to access data from a table and display this data in a DataGrid control.<br><b>Note:</b> this sample is available only for Professional Edition.</td>
+</tr>
+
+<tr>
+<td><b>Dependency</b></td>
+<td>The Dependency demo project illustrates how to use the data dependency technique.
+      The sample watches for some tables in the database. As you modify their data, the name of the table being edited is shown in a list.<br><b>Note:</b> this sample is available for Professional and Standard Edition.</td>
+</tr>
+
+<tr>
+<td><b>Dump</b></td>
+<td>This sample project demonstrates how to backup data from database to file and then restore it. It uses the PgSqlDump component to accomplish the task.<br><b>Note:</b> this sample is available only for Professional Edition.</td>
+</tr>
+
+
+<tr>
+<td><b>Loader</b></td>
+<td>This sample project demonstrates working with PgSqlLoader component. PgSqlLoader work is based on generation of INSERT statements that insert data by several rows at once.<br><b>Note:</b> this sample is available only for Professional Edition.</td>
+</tr>
+
+<tr>
+<td><b>MasterDetail</b></td>
+<td>This sample project demonstrates setting master-detail relation at an untyped dataset. The sample fills two tables at the dataset using the PgSqlDataAdapter component and sets master-detail relation between them.</td>
+</tr>
+
+<tr>
+<td><b>MetaData</b></td>
+<td>This sample project shows how to retrieve information about databases, tables,
+columns, users, and so on. The only method used for these tasks is <b>GetSchema</b>.</td>
+</tr>
+
+<tr>
+<td><b>Pictures</b></td>
+<td>This sample project demonstrates using dotConnect for PostgreSQL for working with BLOB objects as graphics. The sample shows how to retrieve binary data from a PostgresSQL database and display it at the monitor, load and save pictures into the file and the database.</td>
+</tr>
+
+<tr>
+<td><b>RefCursor</b></td>
+<td>This sample project demonstrates using REF CURSOR type in dotConnect for PostgreSQL.</td>
+</tr>
+
+<tr>
+<td><b>RowDataReader</b></td>
+<td>This sample project demonstrates using PgSqlDataReader class to obtain composite type values. The sample executes SQL statement at the PgSqlCommand and gets PgSqlDataReader to retrieve data.</td>
+</tr>
+
+<tr>
+<td><b>RowDataSet</b></td>
+<td>This sample project demonstrates using dataset with dotConnect for PostgreSQL to review and update composite type values. The sample uses PgSqlDataAdapter to fill a dataset and post updated data to PostrgeSQL database. PgSqlDataAdapter uses PgSqlCommandBuilder class to automatically generate SQL for INSERT/UPDATE/DELETE operations.</td>
+</tr>
+
+<tr>
+<td><b>RowStoredProc</b></td>
+<td>This sample project demonstrates execution of a stored procedure that uses a composite type value.</td>
+</tr>
+
+<tr>
+<td><b>RowTable</b></td>
+<td>This sample project demonstrates data mapping from PostgreSQL tables. The sample uses PgSqlDataTable component to access composite type data from the table and displays this data in the DataGrid control.<br><b>Note:</b> this sample is available only for Professional Edition.</td>
+</tr>
+
+<tr>
+<td><b>StoredProc</b></td>
+<td>This sample project demonstrates how to execute a stored procedure and view modified data.</td>
+</tr>
+
+<tr>
+<td><b>Table</b></td>
+<td>This sample project demonstrates data mapping from PostgresSQL tables. The sample sets CommandType property of PgSqlCommand to TableDirect to access data from the table.</td>
+</tr>
+
+<tr>
+<td><b>Transactions</b></td>
+<td>This sample project demonstrates working with PostgresSQL transactions in dotConnect for PostgreSQL. The sample demonstrates how to get a PgSqlTransaction object from a PgSqlConnection object, how to commit or rollback a transaction.</td>
+</tr>
+
+</table>
+
+<p>
+<b>Note:</b> before running sample projects from an IDE you need to execute commands from
+<i>Program Files\Devart\dotConnect\PostgreSQL\Samples\tables.sql</i>
+to create test data. If C++ projects fail to open, it is possible
+that you do not have the assemblies Devart.Data.PostgreSql.dll and Devart.Data.dll in GAC or project's folder.
+</p>
+
+<a name="web"></a><h4 class="dxH4">Web Samples</h4>
+
+<p>
+Run <i>InstallWebTables.sql</i> script by default located in the <i>Program Files\Devart\dotConnect\PostgreSQL\Web\ASP.NET 2\InstallWebTables.sql</i>.
+Use the Start menu group to open Web samples in the language you prefer.
+</p>
+
+<table class="xmldoctable" cellspacing="0">
+
+<tr>
+  <th width=15%>Sample</th>
+  <th>Description</th>
+</tr>
+
+<tr>
+  <td><b>AjaxDemo</b></td>
+  <td>This sample demonstrates data binding and editing in an asynchronous way.
+The sample uses PostgreSqlDataSource component in conjuction with ASP.NET AJAX Update Panel.<br><b>Note:</b> this sample is available only in Professional Edition.</td>
+</tr>
+
+ <tr>
+  <td><b>CRM</b></td>
+  <td>This sample demonstrates how PostgreSqlDatasource can be used in the complex software product such as CRM (Customer Relationship Management).<br>
+The sample illustrates how to perform data retrieving and editing in the complex scenario using PostgreSqlDataSource. This sample is based on the <a href="CrmDemo.html">CRM_DEMO database</a>.<br><b>Note:</b> this sample is available only in Professional Edition.
+</td>
+</tr> 
+
+<tr>
+  <td><b>DataSource</b></td>
+  <td>This sample shows how to use the PostgreSqlDataSource component of dotConnect for PostgreSQL. The sample illustrates using of manual paging, auto paging and master-detail techniques with PostgreSqlDataSource component.<br><b>Note:</b> this sample is available only in Professional Edition.</td>
+</tr>
+
+<tr>
+  <td><b>DataSource_devExpress</b></td>
+  <td>This sample demonstrates using PostgreSqlDataSource with DevExpress ASPxGridView component. The ASPxGridView component uses PostgreSqlDataSource to perform asynchronous data retrieving and paging.<br><b>Note:</b> this sample is available only in Professional Edition.</td>
+</tr>
+
+<tr>
+  <td><b>LoadOnDemand</b></td>
+  <td>This sample demonstrates the load-data-on-demand technique with the dotConnect for PostgreSQL components.<br>
+The sample shows how to use PostgreSqlDataSource and ObjectDataSource to retrieve data from DB asynchronously and only on user demand.<br><b>Note:</b> this sample is available only in Professional Edition.</td>
+</tr>
+
+<tr>
+  <td><b>LoadOnDemand_Telerik</b></td>
+  <td>This sample demonstrates load-data-on-demand technique with PostgreSqlDataSource component in conjuction with Telerik RadGrid control.<br><b>Note:</b> this sample is available only in Professional Edition.</td>
+</tr>
+
+<tr>
+  <td><b>Web</b></td>
+  <td>A sample on simple usage of dotConnect for PostgreSQL in an ASP.NET application.</td>
+</tr>
+
+<tr>
+  <td><b>WebProviders</b></td>
+  <td>This sample shows how to use dotConnect for PostgreSQL with ASP.NET Providers Model.<p>The first part of the WebProviders sample illustrates usage of WebParts, SiteMap, WebEvent, and SessionState Providers, and the second - of Membership, Roles, and Profile Providers.
+<br><b>Note:</b> this sample is available only in Professional Edition.</p></td>
+</tr>
+
+</table>
+
+<a name="ef"></a><h4 class="dxH4">Entity Framework Samples</h4>
+
+<p>
+Use the Start menu group to open Entity framework samples in the language you prefer. To run the samples you should have VisualStudio 2008 Service Pack 1 or later and .NET Framework 3.5 Service Pack 1 or later installed. 
+</p>
+
+<p>Besides, to get more experience you can download the separate
+<a href="http://www.devart.com/dotconnect/efquerysamples.zip">Entity Framework Query Samples</a>
+package from our site.</p>
+
+<p>
+<b>Note:</b> these samples are available only for Professional Edition.
+</p>
+<table class="xmldoctable" cellspacing="0">
+
+<tr>
+  <th width=15%>Sample</th>
+  <th>Description</th>
+</tr>
+
+<tr>
+  <td><b>LinqQueries</b></td>
+  <td>This sample shows the ways of executing LINQ to Entities queries.</td>
+</tr>
+
+<tr>
+  <td><b>MasterDetail</b></td>
+  <td>This sample shows how to setup master/detail relationship with the possibility of editing and saving bound entities.</td>
+</tr>
+
+<tr>
+  <td><b>SaveChanges</b></td>
+  <td>This sample shows data binding, the possibility of editing table entities collection in DataGridView, and saving the changes to database.</td>
+</tr>
+
+</table>
+
+<p>
+<b>Note:</b> before running sample projects from an IDE you need to execute commands from
+<i>crm_demo.sql</i>
+to create test data. PostgreSql server 8.0 or higher should be installed on the server.
+</p>
+
+<a name="linq"></a><h4 class="dxH4">LinqConnect Samples</h4>
+
+<p>LinqConnect samples are an easy way to get started with LinqConnect applications. They demonstrate usage of Entity classes, Language-Integrated Queries, database operations within LinqConnect. These samples are based on the <a href="CrmDemo.html">CRM_DEMO database</a>.</p>
+
+<p>Use the Start menu group to open samples in the language you prefer.</p>
+
+<p><b>Note:</b> these samples are available only in Professional Edition. You can get more detailed information on the LinqConnect samples in the ReadMe file by the following path - <i>Program Files\Devart\dotConnect\Linq\Samples\Readme.html</i></p>
+
+<a name="ws"></a><h4 class="dxH4">Web Service</h4>
+
+<!-- <p>
+This sample illustrates creating a web service with dotConnect for PostgreSQL.
+</p> -->
+<table class="xmldoctable" cellspacing="0">
+<tr>
+  <th width=15%>Sample</th>
+  <th>Description</th>
+</tr>
+
+
+<tr>
+  <td><b>Server</b></td>
+  <td>This sample illustrates creating a web service with dotConnect for PostgreSQL. 
+In the provided web method dotConnect for PostgreSQL classes are used to fill DataSet and return it to a client.</td>
+</tr>
+
+<tr>
+  <td><b>WebClient</b></td>
+  <td>This sample demonstrates using of the web service by the web client. 
+The data recieved from web service is shown in GridView control.</td>
+</tr>
+
+<tr>
+  <td><b>WinClient</b></td>
+  <td>This sample demonstrates using of the web service by the WinForms client. 
+The data recieved from web service is shown in the DataGridView control.</td>
+</tr>
+
+</table>
+
+<a name="ds"></a><h4 class="dxH4">CRM Demo</h4>
+
+<p>
+CRM (Customer Relationship Management) is a widespread class of projects in which you can encounter many typical tasks of database applications development. This sample shows how these tasks can be resolved in the scope of approaches that are offered by dotConnect for PostgreSQL data access solution for designing and building WinForms applications. By examining the source code of CRM demo you can see how the advanced features of dotConnect for PostgreSQL help you build a centralized data access and storage solution. Particularly, it solves common problems like implementing flexible data binding, passing instances of data access components, controlling database connections, and so on. For more information on the best practices in the area of data access please refer to the General Concepts in Database Application Development section of dotConnect for PostgreSQL documentation.</p> 
+<p>To see how it works launch the compiled binary from the Start menu. This sample is based on the <a href="CrmDemo.html">CRM_Demo database</a>.</p>
+
+<p>
+<b>Note:</b> this demo is available only in Professional Edition. Also there is similar demo for ASP.NET; more detailed information on it is provided in the Web samples section. 
+</p>
+
+<!-- end content -->
+
+<p>&nbsp;</p><p>&nbsp;</p><hr size=1>
+<p>&copy; 2003 - 2018 Devart. All rights reserved.</p>
+
+</div>
+
+<script>
+TestEngine();
+AdjustContentSize();
+</script>
+</body>
+</html>

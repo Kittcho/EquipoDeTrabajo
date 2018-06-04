@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3874161B-5DB9-4307-A25E-39F53C8E1D9F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>My.MyApplication</StartupObject>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>Run Compiled Samples</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Projects\Net\Data\PostgreSql\Samples\General\VB\Backup1\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>http://localhost/Run Compiled Samples/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\bin\</OutputPath>
+    <DocumentationFile>Run Compiled Samples.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DocumentationFile>Run Compiled Samples.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data, Version=5.0.1944.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Devart.Data.PostgreSql, Version=7.10.1152.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\CrystalDemo.vb" />
+    <Compile Include="Crystal\CrystalDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\CrystalReport.vb">
+      <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\ReportDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReader\DataReaderDemo.vb" />
+    <Compile Include="DataReader\DataReaderDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataSet\DataSetDemo.vb" />
+    <Compile Include="DataSet\DataSetDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Demo.vb" />
+    <Compile Include="DemoCatalog.vb" />
+    <Compile Include="History.vb" />
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterDetail\MasterDetailDemo.vb" />
+    <Compile Include="MasterDetail\MasterDetailDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MetaData\MetaDatademo.vb" />
+    <Compile Include="MetaData\MetaDataDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.vb" />
+    <Compile Include="Pictures\PicturesDemo.vb" />
+    <Compile Include="Pictures\PicturesDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RefCursor\RefCursorDemo.vb" />
+    <Compile Include="RefCursor\RefCursorDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowDataReader\RowDataReaderDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowDataReader\RowDataReaderDemo.vb" />
+    <Compile Include="RowDataSet\RowDataSetDemo.vb" />
+    <Compile Include="RowDataSet\RowDataSetDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowStoredProc\RowStoredProcDemo.vb" />
+    <Compile Include="RowStoredProc\RowStoredProcDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoredProc\StoredProcDemo.vb" />
+    <Compile Include="StoredProc\StoredProcDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Table\TableDemo.vb" />
+    <Compile Include="Table\TableDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Transactions\Transactionsdemo.vb" />
+    <Compile Include="Transactions\TransactionsDemoControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectForm.resx">
+      <DependentUpon>ConnectForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\CrystalDemoControl.resx">
+      <DependentUpon>CrystalDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\CrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormBase.resx">
+      <DependentUpon>MainFormBase.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Crystal\Crystal.bmp" />
+    <EmbeddedResource Include="DataSet\DataSetDemoControl.resx">
+      <DependentUpon>DataSetDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataSet\DataSet.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MasterDetail\MasterDetailDemoControl.resx">
+      <DependentUpon>MasterDetailDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MasterDetail\MasterDetail.bmp" />
+    <EmbeddedResource Include="MetaData\MetaDataDemoControl.resx">
+      <DependentUpon>MetaDataDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures\PicturesDemoControl.resx">
+      <DependentUpon>PicturesDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoredProc\StoredProcDemoControl.resx">
+      <DependentUpon>StoredProcDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StoredProc\StoredProc.bmp" />
+    <EmbeddedResource Include="Table\TableDemoControl.resx">
+      <DependentUpon>TableDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\TransactionsDemoControl.resx">
+      <DependentUpon>TransactionsDemoControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Crystal\ReportDataSet.xsc">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Crystal\ReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Crystal\ReportDataSet.xss">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RefCursor\RefCursorDemoControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RefCursorDemoControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowDataReader\RowDataReaderDemoControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RowDataReaderDemoControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowDataSet\RowDataSetDemoControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RowDataSetDemoControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowStoredProc\RowStoredProcDemoControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RowStoredProcDemoControl.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

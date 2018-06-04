@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportDataSet" targetNamespace="http://tempuri.org/ReportDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportDataSet.xsd" xmlns="http://tempuri.org/ReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ReportDataSet" msprop:Generator_DataSetName="ReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Emp" msprop:Generator_UserTableName="Emp" msprop:Generator_RowDeletedName="EmpRowDeleted" msprop:Generator_TableClassName="EmpDataTable" msprop:Generator_RowChangedName="EmpRowChanged" msprop:Generator_RowClassName="EmpRow" msprop:Generator_RowChangingName="EmpRowChanging" msprop:Generator_RowEvArgName="EmpRowChangeEvent" msprop:Generator_RowEvHandlerName="EmpRowChangeEventHandler" msprop:Generator_TablePropName="Emp" msprop:Generator_TableVarName="tableEmp" msprop:Generator_RowDeletingName="EmpRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmpNo" msprop:Generator_UserColumnName="EmpNo" msprop:Generator_ColumnPropNameInRow="EmpNo" msprop:Generator_ColumnVarNameInTable="columnEmpNo" msprop:Generator_ColumnPropNameInTable="EmpNoColumn" type="xs:int" />
+              <xs:element name="EName" msprop:Generator_UserColumnName="EName" msprop:Generator_ColumnPropNameInRow="EName" msprop:Generator_ColumnVarNameInTable="columnEName" msprop:Generator_ColumnPropNameInTable="ENameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Job" msprop:Generator_UserColumnName="Job" msprop:Generator_ColumnPropNameInRow="Job" msprop:Generator_ColumnVarNameInTable="columnJob" msprop:Generator_ColumnPropNameInTable="JobColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Mgr" msprop:Generator_UserColumnName="Mgr" msprop:Generator_ColumnPropNameInRow="Mgr" msprop:Generator_ColumnVarNameInTable="columnMgr" msprop:Generator_ColumnPropNameInTable="MgrColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sal" msprop:Generator_UserColumnName="Sal" msprop:Generator_ColumnPropNameInRow="Sal" msprop:Generator_ColumnVarNameInTable="columnSal" msprop:Generator_ColumnPropNameInTable="SalColumn" type="xs:float" minOccurs="0" />
+              <xs:element name="DeptNo" msprop:Generator_UserColumnName="DeptNo" msprop:Generator_ColumnPropNameInRow="DeptNo" msprop:Generator_ColumnVarNameInTable="columnDeptNo" msprop:Generator_ColumnPropNameInTable="DeptNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="DName" msprop:Generator_UserColumnName="DName" msprop:Generator_ColumnPropNameInRow="DName" msprop:Generator_ColumnVarNameInTable="columnDName" msprop:Generator_ColumnPropNameInTable="DNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Loc" msprop:Generator_UserColumnName="Loc" msprop:Generator_ColumnPropNameInRow="Loc" msprop:Generator_ColumnVarNameInTable="columnLoc" msprop:Generator_ColumnPropNameInTable="LocColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Emp" />
+      <xs:field xpath="mstns:EmpNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
