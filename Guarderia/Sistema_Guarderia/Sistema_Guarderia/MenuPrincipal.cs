@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Sistema_Guarderia.Clientes;
+using Sistema_Guarderia.Facturacion;
+using Sistema_Guarderia.Inicio;
+using Sistema_Guarderia.Acceso;
+
+namespace Sistema_Guarderia
+{
+    public partial class MenuPrincipal : Form
+    {
+        public MenuPrincipal()
+        {
+            InitializeComponent();
+        }
+        #region LLamados a formularios
+
+        private void registroAutorizadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registroClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarCliente RegistroCliente = new RegistrarCliente();
+            RegistroCliente.ShowDialog();
+        }
+
+        private void generarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Genera_factura Factura = new Genera_factura();
+            Factura.ShowDialog();
+        }
+
+        private void registrarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Checador checador = new Checador();
+            checador.ShowDialog();
+        }
+
+        #endregion
+
+        #region Eventos
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+            Acceso_usuario acceso = new Acceso_usuario();
+            acceso.ShowDialog();
+
+            bool bAcceso = acceso.bAcceso;
+
+            if (!bAcceso)
+            {
+                this.Close();
+            }
+        }
+
+        #endregion
+    }
+}

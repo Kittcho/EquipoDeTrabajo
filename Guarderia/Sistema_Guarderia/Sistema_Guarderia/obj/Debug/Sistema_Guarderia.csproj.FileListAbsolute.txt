@@ -1,0 +1,12 @@
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.pdb
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Acceso.Acceso_usuario.resources
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.MenuPrincipal.resources
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Properties.Resources.resources
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csproj.GenerateResource.Cache
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
+C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
+C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
+C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
