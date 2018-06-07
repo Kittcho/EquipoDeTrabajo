@@ -11,6 +11,7 @@ using Sistema_Guarderia.Clientes;
 using Sistema_Guarderia.Facturacion;
 using Sistema_Guarderia.Inicio;
 using Sistema_Guarderia.Acceso;
+using Sistema_Guarderia.Conexion;
 
 namespace Sistema_Guarderia
 {
