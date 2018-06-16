@@ -46,7 +46,8 @@
             this.clientesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1092, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(819, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -56,20 +57,20 @@
             this.registrarClienteToolStripMenuItem,
             this.checadorClientesToolStripMenuItem});
             this.registroEntradasSalidasToolStripMenuItem.Name = "registroEntradasSalidasToolStripMenuItem";
-            this.registroEntradasSalidasToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.registroEntradasSalidasToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.registroEntradasSalidasToolStripMenuItem.Text = "Checador";
             // 
             // registrarClienteToolStripMenuItem
             // 
             this.registrarClienteToolStripMenuItem.Name = "registrarClienteToolStripMenuItem";
-            this.registrarClienteToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.registrarClienteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.registrarClienteToolStripMenuItem.Text = "Checador Personal";
             this.registrarClienteToolStripMenuItem.Click += new System.EventHandler(this.registrarClienteToolStripMenuItem_Click);
             // 
             // checadorClientesToolStripMenuItem
             // 
             this.checadorClientesToolStripMenuItem.Name = "checadorClientesToolStripMenuItem";
-            this.checadorClientesToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.checadorClientesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.checadorClientesToolStripMenuItem.Text = "Checador Clientes";
             this.checadorClientesToolStripMenuItem.Click += new System.EventHandler(this.checadorClientesToolStripMenuItem_Click);
             // 
@@ -80,38 +81,39 @@
             this.registroAutorizadosToolStripMenuItem1,
             this.bajaDeClientesToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.clientesToolStripMenuItem.Text = "Registros";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // registroClienteToolStripMenuItem
             // 
             this.registroClienteToolStripMenuItem.Name = "registroClienteToolStripMenuItem";
-            this.registroClienteToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
+            this.registroClienteToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.registroClienteToolStripMenuItem.Text = "Registrar/editar Cliente";
             this.registroClienteToolStripMenuItem.Click += new System.EventHandler(this.registroClienteToolStripMenuItem_Click);
             // 
             // registroAutorizadosToolStripMenuItem1
             // 
             this.registroAutorizadosToolStripMenuItem1.Name = "registroAutorizadosToolStripMenuItem1";
-            this.registroAutorizadosToolStripMenuItem1.Size = new System.Drawing.Size(260, 24);
+            this.registroAutorizadosToolStripMenuItem1.Size = new System.Drawing.Size(216, 22);
             this.registroAutorizadosToolStripMenuItem1.Text = "Registrar niño(a)";
             this.registroAutorizadosToolStripMenuItem1.Click += new System.EventHandler(this.registroAutorizadosToolStripMenuItem1_Click);
             // 
             // bajaDeClientesToolStripMenuItem
             // 
             this.bajaDeClientesToolStripMenuItem.Name = "bajaDeClientesToolStripMenuItem";
-            this.bajaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(260, 24);
+            this.bajaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.bajaDeClientesToolStripMenuItem.Text = "Registro de autorizados(as)";
-            this.bajaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.bajaDeClientesToolStripMenuItem_Click);
+            this.bajaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.registroAutorizadosToolStripMenuItem1_Click);
             // 
             // MenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 693);
+            this.ClientSize = new System.Drawing.Size(819, 563);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MenuPrincipal";
             this.Text = "Pekes Club";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
