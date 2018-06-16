@@ -32,13 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Devart.Data, Version=5.0.1944.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Librerias de conexion\Devart.Data.dll</HintPath>
+    <Reference Include="Devart.Data">
+      <HintPath>..\..\Devart\dotConnect\PostgreSQL\Devart.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Devart.Data.PostgreSql, Version=7.10.1152.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Librerias de conexion\Devart.Data.PostgreSql.dll</HintPath>
+    <Reference Include="Devart.Data.PostgreSql">
+      <HintPath>..\..\Devart\dotConnect\PostgreSQL\Devart.Data.PostgreSql.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.PostgreSql.Vs">
+      <HintPath>..\..\Devart\dotConnect\PostgreSQL\Devart.Data.PostgreSql.Vs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -59,13 +60,14 @@
     <Compile Include="Acceso\Acceso_usuario.Designer.cs">
       <DependentUpon>Acceso_usuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clientes\RegistrarCliente.cs">
+    <Compile Include="Clases\CNegocios.cs" />
+    <Compile Include="Clases\PgConexion.cs" />
+    <Compile Include="Registros\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clientes\RegistrarCliente.Designer.cs">
+    <Compile Include="Registros\RegistrarCliente.Designer.cs">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\CConexionPg.cs" />
     <Compile Include="Facturacion\Genera_Factura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +80,18 @@
     <Compile Include="Inicio\Checador.Designer.cs">
       <DependentUpon>Checador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inicio\ChecadorClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\ChecadorClientes.Designer.cs">
+      <DependentUpon>ChecadorClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\ValidaHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio\ValidaHuella.Designer.cs">
+      <DependentUpon>ValidaHuella.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +102,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Acceso\Acceso_usuario.resx">
       <DependentUpon>Acceso_usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\Checador.resx">
+      <DependentUpon>Checador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\ChecadorClientes.resx">
+      <DependentUpon>ChecadorClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio\ValidaHuella.resx">
+      <DependentUpon>ValidaHuella.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
@@ -101,6 +124,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registros\RegistrarCliente.resx">
+      <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,7 +138,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
