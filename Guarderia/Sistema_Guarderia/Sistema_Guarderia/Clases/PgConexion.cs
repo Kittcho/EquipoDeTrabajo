@@ -4,21 +4,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace Sistema_Guarderia.Conexion
+namespace Sistema_Guarderia.Clases
 {
-    class CConexionPg
+    class PgConexion
     {
         //Variables Globales
         private string sConexion = string.Empty;
         public String sDataBase;
 
-        public CConexionPg()
+        public PgConexion()
         {
             try
             {
