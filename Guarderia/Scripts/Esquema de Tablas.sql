@@ -16,6 +16,7 @@ imagen bytea not null
 create table reg_personas
 (
 id_persona int not null primary key,
+id_tipoPersona int not null references cat_tipospersonas(id_tipo) on update cascade on delete cascade,
 cnombres varchar (100) not null,
 capellidopat varchar (50) not null,
 capellidomat varchar (50),
@@ -54,6 +55,15 @@ dhoraentrada timestamp not null,
 dhorasalida timestamp not null,
 id_personaentrega int not null references reg_personas (id_persona) on update cascade on delete cascade,
 id_personarecibe int not null references reg_personas (id_persona) on update cascade on delete cascade
+);
+
+create table reg_checadorEmpleados
+(
+id_registro int not null primary key,
+id_persona int not null references reg_personas (id_persona) on update cascade on delete cascade,
+dfecha date not null,
+dhoraentrada timestamp not null,
+dhorasalida timestamp not null
 );
 
 create table reg_Autorizado

@@ -11,7 +11,9 @@ using Sistema_Guarderia.Clientes;
 using Sistema_Guarderia.Facturacion;
 using Sistema_Guarderia.Inicio;
 using Sistema_Guarderia.Acceso;
-using Sistema_Guarderia.Conexion;
+using Devart.Data;
+using Devart.Common;
+using Sistema_Guarderia.Clases;
 
 namespace Sistema_Guarderia
 {
@@ -21,11 +23,12 @@ namespace Sistema_Guarderia
         {
             InitializeComponent();
         }
+
         #region LLamados a formularios
 
         private void registroAutorizadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void registroClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,6 +54,7 @@ namespace Sistema_Guarderia
         #region Eventos
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+            
             Acceso_usuario acceso = new Acceso_usuario();
             acceso.ShowDialog();
 
@@ -63,5 +67,26 @@ namespace Sistema_Guarderia
         }
 
         #endregion
+
+        private void checadorClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChecadorClientes clientes = new ChecadorClientes();
+            clientes.ShowDialog();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registroAutorizadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bajaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
