@@ -7,16 +7,25 @@ E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Pro
 E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csproj.GenerateResource.Cache
 E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
 E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
-C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
-C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
-C:\Users\Casa\Documents\Proyecto de Hugo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.pdb
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csprojResolveAssemblyReference.cache
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Acceso.Acceso_usuario.resources
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.MenuPrincipal.resources
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Properties.Resources.resources
-E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csproj.GenerateResource.Cache
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csprojResolveAssemblyReference.cache
+E:\Proyectos\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.Checador.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.pdb
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csprojResolveAssemblyReference.cache
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Acceso.Acceso_usuario.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.Checador.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.ChecadorClientes.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.ValidaHuella.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.MenuPrincipal.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Properties.Resources.resources
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csproj.GenerateResource.Cache
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.dll
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.PostgreSql.dll
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.PostgreSql.Vs.dll
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\VsWebSite.Interop.dll
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.xml
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.PostgreSql.xml
+E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Clientes.RegistrarCliente.resources

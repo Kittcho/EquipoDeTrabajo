@@ -31,12 +31,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.registroEntradasSalidasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checadorClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroAutorizadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,8 +43,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registroEntradasSalidasToolStripMenuItem,
-            this.clientesToolStripMenuItem,
-            this.facturaciónToolStripMenuItem});
+            this.clientesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1092, 28);
@@ -55,17 +53,25 @@
             // registroEntradasSalidasToolStripMenuItem
             // 
             this.registroEntradasSalidasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registrarClienteToolStripMenuItem});
+            this.registrarClienteToolStripMenuItem,
+            this.checadorClientesToolStripMenuItem});
             this.registroEntradasSalidasToolStripMenuItem.Name = "registroEntradasSalidasToolStripMenuItem";
-            this.registroEntradasSalidasToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
-            this.registroEntradasSalidasToolStripMenuItem.Text = "Inicio";
+            this.registroEntradasSalidasToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.registroEntradasSalidasToolStripMenuItem.Text = "Checador";
             // 
             // registrarClienteToolStripMenuItem
             // 
             this.registrarClienteToolStripMenuItem.Name = "registrarClienteToolStripMenuItem";
-            this.registrarClienteToolStripMenuItem.Size = new System.Drawing.Size(247, 24);
-            this.registrarClienteToolStripMenuItem.Text = "Registro Entradas/Salidas";
+            this.registrarClienteToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.registrarClienteToolStripMenuItem.Text = "Checador Personal";
             this.registrarClienteToolStripMenuItem.Click += new System.EventHandler(this.registrarClienteToolStripMenuItem_Click);
+            // 
+            // checadorClientesToolStripMenuItem
+            // 
+            this.checadorClientesToolStripMenuItem.Name = "checadorClientesToolStripMenuItem";
+            this.checadorClientesToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.checadorClientesToolStripMenuItem.Text = "Checador Clientes";
+            this.checadorClientesToolStripMenuItem.Click += new System.EventHandler(this.checadorClientesToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -74,8 +80,9 @@
             this.registroAutorizadosToolStripMenuItem1,
             this.bajaDeClientesToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.clientesToolStripMenuItem.Text = "Registros";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // registroClienteToolStripMenuItem
             // 
@@ -87,29 +94,16 @@
             // registroAutorizadosToolStripMenuItem1
             // 
             this.registroAutorizadosToolStripMenuItem1.Name = "registroAutorizadosToolStripMenuItem1";
-            this.registroAutorizadosToolStripMenuItem1.Size = new System.Drawing.Size(232, 24);
-            this.registroAutorizadosToolStripMenuItem1.Text = "Registro Autorizados";
+            this.registroAutorizadosToolStripMenuItem1.Size = new System.Drawing.Size(260, 24);
+            this.registroAutorizadosToolStripMenuItem1.Text = "Registrar niño(a)";
+            this.registroAutorizadosToolStripMenuItem1.Click += new System.EventHandler(this.registroAutorizadosToolStripMenuItem1_Click);
             // 
             // bajaDeClientesToolStripMenuItem
             // 
             this.bajaDeClientesToolStripMenuItem.Name = "bajaDeClientesToolStripMenuItem";
-            this.bajaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.bajaDeClientesToolStripMenuItem.Text = "Baja de clientes";
-            // 
-            // facturaciónToolStripMenuItem
-            // 
-            this.facturaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarFacturaToolStripMenuItem});
-            this.facturaciónToolStripMenuItem.Name = "facturaciónToolStripMenuItem";
-            this.facturaciónToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.facturaciónToolStripMenuItem.Text = "Facturación";
-            // 
-            // generarFacturaToolStripMenuItem
-            // 
-            this.generarFacturaToolStripMenuItem.Name = "generarFacturaToolStripMenuItem";
-            this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.generarFacturaToolStripMenuItem.Text = "Generar factura";
-            this.generarFacturaToolStripMenuItem.Click += new System.EventHandler(this.generarFacturaToolStripMenuItem_Click);
+            this.bajaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(260, 24);
+            this.bajaDeClientesToolStripMenuItem.Text = "Registro de autorizados(as)";
+            this.bajaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.bajaDeClientesToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -138,8 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem registroClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroAutorizadosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bajaDeClientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generarFacturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checadorClientesToolStripMenuItem;
     }
 }
 

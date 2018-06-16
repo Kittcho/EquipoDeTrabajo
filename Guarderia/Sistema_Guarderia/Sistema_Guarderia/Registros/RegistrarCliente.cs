@@ -16,5 +16,15 @@ namespace Sistema_Guarderia.Clientes
         {
             InitializeComponent();
         }
+
+        private void inicializar()
+        {
+            activarDarDeBajaToolStripMenuItem.Enabled = false;
+        }
+
+        private void RegistrarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
