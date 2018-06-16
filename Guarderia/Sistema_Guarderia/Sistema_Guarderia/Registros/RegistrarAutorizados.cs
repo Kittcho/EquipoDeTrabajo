@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistema_Guarderia.Registros
 {
-    public partial class RegistrarCliente : Form
+    public partial class RegistrarAutorizados : Form
     {
-        public RegistrarCliente()
+        public RegistrarAutorizados()
         {
             InitializeComponent();
         }

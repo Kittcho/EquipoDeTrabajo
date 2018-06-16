@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema_Guarderia.Clientes;
+using Sistema_Guarderia.Registros;
 using Sistema_Guarderia.Facturacion;
 using Sistema_Guarderia.Inicio;
 using Sistema_Guarderia.Acceso;
 using Devart.Data;
 using Devart.Common;
 using Sistema_Guarderia.Clases;
+using Sistema_Guarderia.Consultas;
 
 namespace Sistema_Guarderia
 {
@@ -81,12 +82,8 @@ namespace Sistema_Guarderia
 
         private void registroAutorizadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void bajaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            ConsultaAutorizados autorizados = new ConsultaAutorizados();
+            autorizados.ShowDialog();
         }
     }
 }
