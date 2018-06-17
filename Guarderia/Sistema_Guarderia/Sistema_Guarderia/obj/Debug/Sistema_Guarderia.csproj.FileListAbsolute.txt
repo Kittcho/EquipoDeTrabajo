@@ -45,3 +45,4 @@ E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderi
 E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
 E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Registros.RegistrarCliente.resources
 E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Registros.RegistrarAutorizados.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csprojResolveAssemblyReference.cache

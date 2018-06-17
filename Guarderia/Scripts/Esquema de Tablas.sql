@@ -60,7 +60,7 @@ id_personarecibe int not null references reg_personas (id_persona) on update cas
 create table reg_checadorEmpleados
 (
 id_registro int not null primary key,
-id_persona int not null references reg_personas (id_persona) on update cascade on delete cascade,
+id_persona int not null references reg_personas (id_persona) on update cascade on delete cascade,
 dfecha date not null,
 dhoraentrada timestamp not null,
 dhorasalida timestamp not null

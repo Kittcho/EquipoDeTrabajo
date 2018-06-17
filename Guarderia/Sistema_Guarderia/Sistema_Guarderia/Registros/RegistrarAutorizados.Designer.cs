@@ -42,7 +42,6 @@
             this.txt_ApeMat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -84,7 +83,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(549, 24);
-            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // opcionesToolStripMenuItem
@@ -101,6 +100,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // activarDarDeBajaToolStripMenuItem
             // 
@@ -118,15 +118,14 @@
             this.groupBox3.Controls.Add(this.txt_ApeMat);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(34, 35);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(364, 154);
-            this.groupBox3.TabIndex = 34;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información Básica";
             // 
@@ -153,34 +152,34 @@
             // txt_nombres
             // 
             this.txt_nombres.Location = new System.Drawing.Point(110, 52);
-            this.txt_nombres.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_nombres.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nombres.Name = "txt_nombres";
             this.txt_nombres.Size = new System.Drawing.Size(209, 20);
-            this.txt_nombres.TabIndex = 0;
+            this.txt_nombres.TabIndex = 1;
             // 
             // txt_telefono
             // 
             this.txt_telefono.Location = new System.Drawing.Point(110, 132);
-            this.txt_telefono.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_telefono.Margin = new System.Windows.Forms.Padding(2);
             this.txt_telefono.Name = "txt_telefono";
             this.txt_telefono.Size = new System.Drawing.Size(111, 20);
-            this.txt_telefono.TabIndex = 26;
+            this.txt_telefono.TabIndex = 4;
             // 
             // txt_ApePat
             // 
             this.txt_ApePat.Location = new System.Drawing.Point(110, 75);
-            this.txt_ApePat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ApePat.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ApePat.Name = "txt_ApePat";
             this.txt_ApePat.Size = new System.Drawing.Size(209, 20);
-            this.txt_ApePat.TabIndex = 1;
+            this.txt_ApePat.TabIndex = 2;
             // 
             // txt_ApeMat
             // 
             this.txt_ApeMat.Location = new System.Drawing.Point(110, 98);
-            this.txt_ApeMat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ApeMat.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ApeMat.Name = "txt_ApeMat";
             this.txt_ApeMat.Size = new System.Drawing.Size(209, 20);
-            this.txt_ApeMat.TabIndex = 2;
+            this.txt_ApeMat.TabIndex = 3;
             // 
             // label1
             // 
@@ -202,15 +201,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Apellido Paterno";
             // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(242, 22);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 22;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -228,7 +218,7 @@
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 19);
-            this.label9.TabIndex = 21;
+            this.label9.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -243,29 +233,29 @@
             this.groupBox2.Controls.Add(this.txt_Ciudad);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(34, 200);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(364, 169);
-            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
             // txt_Calle
             // 
             this.txt_Calle.Location = new System.Drawing.Point(110, 27);
-            this.txt_Calle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Calle.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Calle.Name = "txt_Calle";
             this.txt_Calle.Size = new System.Drawing.Size(170, 20);
-            this.txt_Calle.TabIndex = 10;
+            this.txt_Calle.TabIndex = 0;
             // 
             // txt_NumCasa
             // 
             this.txt_NumCasa.Location = new System.Drawing.Point(110, 54);
-            this.txt_NumCasa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_NumCasa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_NumCasa.Name = "txt_NumCasa";
             this.txt_NumCasa.Size = new System.Drawing.Size(66, 20);
-            this.txt_NumCasa.TabIndex = 11;
+            this.txt_NumCasa.TabIndex = 1;
             // 
             // lbl_calle
             // 
@@ -290,18 +280,18 @@
             // txt_CodigoPostal
             // 
             this.txt_CodigoPostal.Location = new System.Drawing.Point(110, 108);
-            this.txt_CodigoPostal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_CodigoPostal.Margin = new System.Windows.Forms.Padding(2);
             this.txt_CodigoPostal.Name = "txt_CodigoPostal";
             this.txt_CodigoPostal.Size = new System.Drawing.Size(66, 20);
-            this.txt_CodigoPostal.TabIndex = 14;
+            this.txt_CodigoPostal.TabIndex = 3;
             // 
             // txt_Colonia
             // 
             this.txt_Colonia.Location = new System.Drawing.Point(110, 80);
-            this.txt_Colonia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Colonia.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Colonia.Name = "txt_Colonia";
             this.txt_Colonia.Size = new System.Drawing.Size(170, 20);
-            this.txt_Colonia.TabIndex = 15;
+            this.txt_Colonia.TabIndex = 2;
             // 
             // label7
             // 
@@ -326,10 +316,10 @@
             // txt_Ciudad
             // 
             this.txt_Ciudad.Location = new System.Drawing.Point(110, 137);
-            this.txt_Ciudad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Ciudad.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Ciudad.Name = "txt_Ciudad";
             this.txt_Ciudad.Size = new System.Drawing.Size(170, 20);
-            this.txt_Ciudad.TabIndex = 18;
+            this.txt_Ciudad.TabIndex = 4;
             // 
             // label6
             // 
@@ -344,10 +334,10 @@
             // txt_huella
             // 
             this.txt_huella.Location = new System.Drawing.Point(427, 332);
-            this.txt_huella.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_huella.Margin = new System.Windows.Forms.Padding(2);
             this.txt_huella.Name = "txt_huella";
             this.txt_huella.Size = new System.Drawing.Size(74, 40);
-            this.txt_huella.TabIndex = 32;
+            this.txt_huella.TabIndex = 3;
             this.txt_huella.Text = "Registrar huella";
             this.txt_huella.UseVisualStyleBackColor = true;
             // 
@@ -355,7 +345,7 @@
             // 
             this.pb_huella.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb_huella.Location = new System.Drawing.Point(413, 206);
-            this.pb_huella.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pb_huella.Margin = new System.Windows.Forms.Padding(2);
             this.pb_huella.Name = "pb_huella";
             this.pb_huella.Size = new System.Drawing.Size(102, 122);
             this.pb_huella.TabIndex = 31;
@@ -364,18 +354,19 @@
             // btn_foto
             // 
             this.btn_foto.Location = new System.Drawing.Point(427, 161);
-            this.btn_foto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_foto.Margin = new System.Windows.Forms.Padding(2);
             this.btn_foto.Name = "btn_foto";
             this.btn_foto.Size = new System.Drawing.Size(74, 40);
-            this.btn_foto.TabIndex = 30;
+            this.btn_foto.TabIndex = 2;
             this.btn_foto.Text = "Seleccionar Fotografía";
             this.btn_foto.UseVisualStyleBackColor = true;
+            this.btn_foto.Click += new System.EventHandler(this.btn_foto_Click);
             // 
             // pb_Foto
             // 
             this.pb_Foto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pb_Foto.Location = new System.Drawing.Point(413, 35);
-            this.pb_Foto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pb_Foto.Margin = new System.Windows.Forms.Padding(2);
             this.pb_Foto.Name = "pb_Foto";
             this.pb_Foto.Size = new System.Drawing.Size(102, 122);
             this.pb_Foto.TabIndex = 29;
@@ -395,7 +386,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RegistrarAutorizados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Autorizados";
@@ -429,7 +420,6 @@
         private System.Windows.Forms.TextBox txt_ApeMat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
