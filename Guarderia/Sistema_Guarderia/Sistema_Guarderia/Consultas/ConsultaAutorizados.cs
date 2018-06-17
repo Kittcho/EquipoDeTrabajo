@@ -18,6 +18,11 @@ namespace Sistema_Guarderia.Consultas
             InitializeComponent();
         }
 
+        private void ConsultaAutorizados_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void agregarPersonaAutorizadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
