@@ -53,6 +53,7 @@ namespace Sistema_Guarderia.Registros
         {
             Control controlVacio;
             string mensaje = string.Empty;
+            //Valida que los controles no esten vacios
             if(!negocio.ValidaFormulario(this.Controls as ControlCollection, out controlVacio, out mensaje))
             {
                 controlVacio.Focus();
@@ -60,9 +61,110 @@ namespace Sistema_Guarderia.Registros
             }else
             {
                 //TODO: REALIZAR EL PROCESO DE GUARDADO
+                if (txt_CodigoPostal.Text.Length < 5)
+                {
+                    MessageBox.Show("Favor de ingresar un código postal valido.","Proceso inconcluso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    this.txt_CodigoPostal.Select();
+                    this.txt_CodigoPostal.Focus();
+                }
+                else if (txt_NumCasa.Text.Length < 10)
+                {
+                    MessageBox.Show("Favor de ingresar un número telefonico valido.\nSi el número es de casa, favor de ingresar la LADA.", "Proceso inconcluso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.txt_CodigoPostal.Select();
+                    this.txt_CodigoPostal.Focus();
+                }
+                else//INICIAMOS CON EL PORCESO DE GUARDADO
+                {
+
+                }
+
+
+
             }
         }
 
-        //TODO: VALIDAR LAS CAJAS DE TEXTO PARA QUE SOLO ACEPTEN LETRAS O NUMEROS
+        private void txt_nombres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloLetras(e);
+        }
+
+        private void txt_ApePat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloLetras(e);
+        }
+
+        private void txt_ApeMat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloLetras(e);
+        }
+
+        private void txt_Calle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloLetras(e);
+        }
+
+        private void txt_Ciudad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloLetras(e);
+        }
+
+        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloNumeros(e);
+        }
+
+        private void txt_NumCasa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloNumeros(e);
+        }
+
+        private void txt_CodigoPostal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloNumeros(e);
+        }
+
+        private void txt_Colonia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SoloNumerosYLetras(e);
+        }
+
+        /// <summary>
+        /// Solo deja capturar letras, retoseso o espacio en el textbox
+        /// </summary>
+        /// <param name="e">Evento contenedor de la tecla presionada</param>
+        private void SoloLetras(KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Solo deja capturar numeros y retoseso en el textbox
+        /// </summary>
+        /// <param name="e">Evento contenedor de la tecla presionada</param>
+        private void SoloNumeros(KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Solo deja capturar numeros, letras, retoseso y espacio en el textbox
+        /// </summary>
+        /// <param name="e">Evento contenedor de la tecla presionada</param>
+        private void SoloNumerosYLetras(KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && !(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }
