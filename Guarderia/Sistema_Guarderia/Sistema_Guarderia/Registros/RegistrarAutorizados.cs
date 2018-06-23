@@ -1,4 +1,5 @@
 ﻿using Sistema_Guarderia.Clases;
+using Sistema_Guarderia.Consultas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,22 +16,32 @@ namespace Sistema_Guarderia.Registros
     {
         //Variables Globales
         byte[] imagenBytes;
-        CNegocios negocio;
+        CNegocios logica;
+        string opcion = string.Empty;
 
-        public RegistrarAutorizados()
+        public RegistrarAutorizados(string opcion)
         {
             InitializeComponent();
-            negocio = new CNegocios();
+            logica = new CNegocios();
+            this.opcion = opcion;
         }
 
-        private void inicializar()
+        private void RegistrarAutorizados_Load(object sender, EventArgs e)
         {
-            activarDarDeBajaToolStripMenuItem.Enabled = false;
-        }
+            if (this.opcion.Equals("Agregar"))
+            {
+                 this.lblEstatusAutorizado.Text =  "Nuevo";
+                 this.lblEstatusAutorizado.TextAlign = ContentAlignment.BottomCenter;
+                 this.activarDarDeBajaToolStripMenuItem.Enabled = false;
+            }
+            else if (this.opcion.Equals("Cambios"))
+            {
+                this.lblEstatusAutorizado.Text =  "Modificar";
+                this.lblEstatusAutorizado.TextAlign = ContentAlignment.BottomCenter;
+                this.guardarToolStripMenuItem.Enabled = false;
+            }
 
-        private void RegistrarCliente_Load(object sender, EventArgs e)
-        {
-
+            InicializaGridNinios();
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
@@ -42,7 +53,7 @@ namespace Sistema_Guarderia.Registros
             if (!string.IsNullOrWhiteSpace(dialog.SafeFileName))
             {
                 //Tomando la imagen
-                this.imagenBytes = this.negocio.ObtieneImagenEnArregloBytes(dialog.FileName);
+                this.imagenBytes = this.logica.ObtieneImagenEnArregloBytes(dialog.FileName);
                 //mostrando en el picturebox
                 this.pb_Foto.Image = Image.FromFile(dialog.FileName);
                 this.pb_Foto.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -54,32 +65,63 @@ namespace Sistema_Guarderia.Registros
             Control controlVacio;
             string mensaje = string.Empty;
             //Valida que los controles no esten vacios
-            if(!negocio.ValidaFormulario(this.Controls as ControlCollection, out controlVacio, out mensaje))
+            try
             {
-                controlVacio.Focus();
-                MessageBox.Show(mensaje,"Proceso inconcluso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }else
+                if (!logica.ValidaFormulario(this.Controls as ControlCollection, out controlVacio, out mensaje))
+                {
+                    controlVacio.Focus();
+                    MessageBox.Show(mensaje, "Proceso inconcluso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    List<CNinio> listaNinios = new List<CNinio>();
+                    foreach (DataGridViewRow item in dgvNinios.Rows)
+                    {
+                        if (Convert.ToBoolean((item.Cells["ChkNinio"] as DataGridViewCheckBoxCell).Value))
+                        {
+                            CNinio ninio = new CNinio()
+                            {
+                                id_ninio = Convert.ToInt32(item.Cells["id_ninio"].Value),
+                                nombreNinio = item.Cells["nombreninio"].Value.ToString(),
+                                nombrePadre = item.Cells["nombretutor"].Value.ToString()
+                            };
+
+                            listaNinios.Add(ninio);
+                        }
+                    }
+
+                    if (listaNinios.Count == 0)
+                    {
+                        MessageBox.Show(string.Format("Favor de seleccionar el o los niños que estará autorizado de recoger {0} {1} {2}.", txt_nombres.Text, txt_ApePat.Text, txt_ApeMat.Text), "Proceso incloncuso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        UTF8Encoding encoding = new UTF8Encoding();
+                        CPersona autorizado = new CPersona()
+                        {
+                            nombre = this.txt_nombres.Text,
+                            apellidoPaterno = this.txt_ApePat.Text,
+                            apellidoMaterno = this.txt_ApeMat.Text,
+                            imagenHuella = encoding.GetBytes("Dedo falso"),
+                            fotografia = this.imagenBytes
+                        };
+
+                        string resp = logica.GuardaImformacionAutorizados(ref autorizado, listaNinios);
+                        if (resp.Equals("Completado"))
+                        {
+                            MessageBox.Show("Se registraron los datos correctamente.", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimpiaFormulario();
+                        }
+                        else
+                        {
+                            MessageBox.Show(resp, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                //TODO: REALIZAR EL PROCESO DE GUARDADO
-                if (txt_CodigoPostal.Text.Length < 5)
-                {
-                    MessageBox.Show("Favor de ingresar un código postal valido.","Proceso inconcluso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                    this.txt_CodigoPostal.Select();
-                    this.txt_CodigoPostal.Focus();
-                }
-                else if (txt_NumCasa.Text.Length < 10)
-                {
-                    MessageBox.Show("Favor de ingresar un número telefonico valido.\nSi el número es de casa, favor de ingresar la LADA.", "Proceso inconcluso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.txt_CodigoPostal.Select();
-                    this.txt_CodigoPostal.Focus();
-                }
-                else//INICIAMOS CON EL PORCESO DE GUARDADO
-                {
-
-                }
-
-
-
+                MessageBox.Show(string.Format("Mensaje de error: {0}",ex.Message),"Execepción",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -98,34 +140,35 @@ namespace Sistema_Guarderia.Registros
             SoloLetras(e);
         }
 
-        private void txt_Calle_KeyPress(object sender, KeyPressEventArgs e)
+        private void dgvNinios_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            SoloLetras(e);
+            if (dgvNinios.IsCurrentCellDirty)
+            {
+                dgvNinios.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
 
-        private void txt_Ciudad_KeyPress(object sender, KeyPressEventArgs e)
+        /// <summary>
+        /// Inicializa y formatea los valores del grid
+        /// </summary>
+        private void InicializaGridNinios()
         {
-            SoloLetras(e);
-        }
-
-        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            SoloNumeros(e);
-        }
-
-        private void txt_NumCasa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            SoloNumeros(e);
-        }
-
-        private void txt_CodigoPostal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            SoloNumeros(e);
-        }
-
-        private void txt_Colonia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            SoloNumerosYLetras(e);
+            dgvNinios.DataSource = logica.ConsultaNinios();
+            dgvNinios.Columns.Insert(0, new DataGridViewCheckBoxColumn());
+            dgvNinios.Columns[0].HeaderText = "Selección";
+            dgvNinios.Columns[0].Name = "ChkNinio";
+            dgvNinios.Columns["nombreninio"].HeaderText = "Niños inscritos";
+            dgvNinios.Columns["nombretutor"].HeaderText = "Padre/Tutor responsable";
+            dgvNinios.Columns["id_ninio"].Visible = false;
+            dgvNinios.Columns["ChkNinio"].Width = 60;
+            dgvNinios.Columns["nombreninio"].Width = 200;
+            dgvNinios.Columns["nombretutor"].Width = 200;
+            dgvNinios.Columns["nombreninio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["nombretutor"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["ChkNinio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["nombreninio"].ReadOnly = true;
+            dgvNinios.Columns["nombretutor"].ReadOnly = true;
+            dgvNinios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>
@@ -164,6 +207,23 @@ namespace Sistema_Guarderia.Registros
             {
                 e.Handled = true;
                 return;
+            }
+        }
+
+        /// <summary>
+        /// Limpia todos los controles de este formulario
+        /// </summary>
+        private void LimpiaFormulario()
+        {
+            this.txt_nombres.Text = string.Empty;
+            this.txt_ApePat.Text = string.Empty;
+            this.txt_ApeMat.Text = string.Empty;
+            this.pb_Foto.Image = null;
+            this.pb_huella.Image = null;
+            foreach (DataGridViewRow row in dgvNinios.Rows)
+            {
+                DataGridViewCheckBoxCell cellSelecion = row.Cells["ChkNinio"] as DataGridViewCheckBoxCell;
+                cellSelecion.Value = false;
             }
         }
     }

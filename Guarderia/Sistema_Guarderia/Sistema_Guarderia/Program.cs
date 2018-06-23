@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Sistema_Guarderia.Consultas;
+using Sistema_Guarderia.Registros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Sistema_Guarderia
 {
@@ -17,6 +20,7 @@ namespace Sistema_Guarderia
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MenuPrincipal());
+            //Application.Run(new RegistrarAutorizados("Agregar"));
         }
     }
 }

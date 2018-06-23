@@ -14,7 +14,6 @@ namespace Sistema_Guarderia.Clases
     {
         //Variables Globales
         private string sConexion = string.Empty;
-        public String sDataBase;
 
         public PgConexion()
         {
@@ -78,7 +77,6 @@ namespace Sistema_Guarderia.Clases
             {
                 throw;
             }
-
             return dt;
         }
 
@@ -164,6 +162,70 @@ namespace Sistema_Guarderia.Clases
                 parsedValue = defaultValue;
             }
             return isParsed;
+        }
+
+        /// <summary>
+        /// Guarda la información de alta de un autorizado
+        /// </summary>
+        /// <param name="autorizado">Datos de la persona a registrar</param>
+        /// <param name="idFoto">id de su foto en la tabla reg_fotos</param>
+        /// <param name="idNinio">id de el o los niños que se ligaran a la persona</param>
+        /// <returns></returns>
+        public int GuardaImformacionAutorizadosConexion(CPersona autorizado, int idFoto, int idNinio)
+        {
+            int registrosAfectados = 0;
+            try
+            {
+                using (PgSqlConnection connection = new PgSqlConnection(this.sConexion))
+                {
+                    PgSqlCommand command = new PgSqlCommand(@"INSERT INTO reg_autorizado (cnombres, capellidopat,capellidomat, id_foto, bactivo, dfechaultimaactualizacion, id_ninio, huella)
+                                VALUES (@cnombres, @capellidopat, @capellidomat, @id_foto, @bactivo, @dfechaultimaactualizacion, @id_ninio, @huella)", connection);
+                    command.Parameters.Add("@cnombres", PgSqlType.VarChar, autorizado.nombre.Length).Value = autorizado.nombre;
+                    command.Parameters.Add("@capellidopat", PgSqlType.VarChar, autorizado.apellidoPaterno.Length).Value = autorizado.apellidoPaterno;
+                    command.Parameters.Add("@capellidomat", PgSqlType.VarChar, autorizado.apellidoMaterno.Length).Value = autorizado.apellidoMaterno;
+                    command.Parameters.Add("@id_foto", PgSqlType.Int).Value = idFoto;
+                    command.Parameters.Add("@bactivo", PgSqlType.Bit).Value = true;
+                    command.Parameters.Add("@dfechaultimaactualizacion", PgSqlType.TimeStamp).Value = DateTime.Now;
+                    command.Parameters.Add("@id_ninio", PgSqlType.Int).Value = idNinio;
+                    command.Parameters.Add("@huella", PgSqlType.ByteA, autorizado.imagenHuella.Length).Value = autorizado.imagenHuella;
+                    command.Connection.Open();
+                    registrosAfectados = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return registrosAfectados;
+        }
+
+        /// <summary>
+        /// Guardar la imagen en la tabla reg_fotos y regresa su id generado
+        /// </summary>
+        /// <param name="imagen">Imagen a guardar</param>
+        /// <returns>Id generado en la tabla destino</returns>
+        public int GuardaImagenConexion(byte[] imagen)
+        {
+            int idFoto = 0;
+
+            try
+            {
+                using (PgSqlConnection connection = new PgSqlConnection(this.sConexion))
+                {
+                    connection.Open();
+                    PgSqlCommand command = new PgSqlCommand(@"INSERT INTO reg_fotos (imagen) VALUES (@imagen) RETURNING id_foto", connection);
+                    command.Parameters.Add("@imagen", PgSqlType.ByteA, imagen.Length).Value = imagen;
+                    command.CommandType = CommandType.Text;
+                    idFoto = Convert.ToInt32(command.ExecuteScalar());
+                    connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return idFoto;
         }
     }
 }

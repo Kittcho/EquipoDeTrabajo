@@ -60,6 +60,8 @@
     <Compile Include="Acceso\Acceso_usuario.Designer.cs">
       <DependentUpon>Acceso_usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\CNinio.cs" />
+    <Compile Include="Clases\CPersona.cs" />
     <Compile Include="Clases\CNegocios.cs" />
     <Compile Include="Clases\PgConexion.cs" />
     <Compile Include="Consultas\ConsultaAutorizados.cs">
