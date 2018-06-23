@@ -26,7 +26,7 @@ namespace Sistema_Guarderia.Consultas
         private void agregarPersonaAutorizadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarAutorizados autorizados = new RegistrarAutorizados();
+            RegistrarAutorizados autorizados = new RegistrarAutorizados("Agregar");
             autorizados.ShowDialog();
             this.Show();
         }

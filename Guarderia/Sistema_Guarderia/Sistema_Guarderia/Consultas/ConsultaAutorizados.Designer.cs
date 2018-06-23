@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarPersonaAutorizadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAutorizados)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opcionesToolStripMenuItem});
+            this.opcionesToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(507, 24);
@@ -86,6 +88,12 @@
             this.agregarPersonaAutorizadaToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.agregarPersonaAutorizadaToolStripMenuItem.Text = "Agregar persona autorizada";
             this.agregarPersonaAutorizadaToolStripMenuItem.Click += new System.EventHandler(this.agregarPersonaAutorizadaToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 20);
+            this.toolStripMenuItem1.Text = " ";
             // 
             // ConsultaAutorizados
             // 
@@ -117,5 +125,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarPersonaAutorizadaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

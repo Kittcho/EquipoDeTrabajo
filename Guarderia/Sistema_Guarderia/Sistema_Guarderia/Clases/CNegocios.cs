@@ -21,13 +21,10 @@ namespace Sistema_Guarderia.Clases
             this.conexion = new PgConexion();
         }
 
-        #region "Métodos de la foma ConsultaAutorizados"
         public DataTable LlenaGridAutorizados()
         {
             return new DataTable();
         }
-        #endregion
-
 
         /// <summary>
         /// Convierte una imagen en arreglo de bytes
@@ -110,6 +107,82 @@ namespace Sistema_Guarderia.Clases
                 }
             }
             return respuesta;
+        }
+
+        /// <summary>
+        /// Guarda la foto del autorizado y posteriormente registra ala persona en la tabla de Autorizados
+        /// </summary>
+        /// <param name="autorizado">Datos de la persona a registrar</param>
+        /// <param name="listaNinios">Nino(s) seleccionado(s)</param>
+        /// <returns>Completado = si pudo guardar la foto  y registrar ala persona ó el mensaje de error generado</returns>
+        public string GuardaImformacionAutorizados(ref CPersona autorizado, List<CNinio> listaNinios)
+        {
+            string respuesta = "Completado";
+            int cantidadNinios = listaNinios.Count;
+            int cantidadDeInsert = 0;
+
+            try
+            {
+                int idFoto = GuardaImagen(autorizado.fotografia);
+
+                if (idFoto != -1)
+                {
+                    foreach (var item in listaNinios)
+                    {
+                        cantidadDeInsert += conexion.GuardaImformacionAutorizadosConexion(autorizado, idFoto, Convert.ToInt32(item.id_ninio));
+                    }
+
+                    if (cantidadDeInsert != cantidadNinios)
+                    {
+                        respuesta = "Ocurrio un problema al intentar guardar la información, por favor comuníquese con el administrador del sistema.";
+                    }
+                }
+                else
+                {
+                    respuesta = "No fue posible guardar la fotografia de la persona a registrar, por favor comuníquese con el administrador del sistema.";
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Guarda y regresa el id generado en la tabla de fotos
+        /// </summary>
+        /// <param name="imagen">Imagen a guardar</param>
+        /// <returns>id generado</returns>
+        private int GuardaImagen(byte[] imagen)
+        {
+            int idFoto = -1;
+            try
+            {
+                idFoto = conexion.GuardaImagenConexion(imagen);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return idFoto;
+        }
+
+        /// <summary>
+        /// Obtiene el listado de niños registrados y activos
+        /// </summary>
+        /// <returns>Listado de niños con si id y nombre de su padre registrado</returns>
+        public DataTable ConsultaNinios()
+        {
+            return conexion.Consulta(@"SELECT ninios.id_ninio, ninios.cnombres||' '||ninios.capellidopat||' '||ninios.capellidomat AS NombreNinio, 
+                                     padres.cnombres||' '||padres.capellidopat||' '||padres.capellidomat AS NombreTutor 
+                                     FROM reg_ninios ninios 
+                                     INNER JOIN reg_personas padres 
+                                     ON ninios.id_persona = padres.id_persona 
+                                     WHERE ninios.bactivo = '1' 
+                                     ORDER BY ninios.id_ninio;");
         }
     }
 }
