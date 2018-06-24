@@ -187,7 +187,7 @@ namespace Sistema_Guarderia.Clases
                     command.Parameters.Add("@bactivo", PgSqlType.Bit).Value = true;
                     command.Parameters.Add("@dfechaultimaactualizacion", PgSqlType.TimeStamp).Value = DateTime.Now;
                     command.Parameters.Add("@id_ninio", PgSqlType.Int).Value = idNinio;
-                    command.Parameters.Add("@huella", PgSqlType.ByteA, autorizado.imagenHuella.Length).Value = autorizado.imagenHuella;
+                    command.Parameters.Add("@huella", PgSqlType.ByteA, autorizado.imagenHuellaArray.Length).Value = autorizado.imagenHuellaArray;
                     command.Connection.Open();
                     registrosAfectados = command.ExecuteNonQuery();
                 }
@@ -226,6 +226,28 @@ namespace Sistema_Guarderia.Clases
             }
 
             return idFoto;
+        }
+
+        public byte[] ConsultaImagen(string sConsulta)
+        {
+            byte[] valor;
+            try
+            {
+                using (PgSqlConnection Con = new PgSqlConnection(this.sConexion))
+                {
+                    Con.Open();
+                    PgSqlCommand cmd = new PgSqlCommand(sConsulta, Con);
+                    cmd.CommandType = CommandType.Text;
+                    valor = cmd.ExecuteScalar() as byte[];
+                    Con.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return valor;
         }
     }
 }

@@ -42,7 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblEstatusAutorizado = new System.Windows.Forms.Label();
-            this.txt_huella = new System.Windows.Forms.Button();
+            this.btn_huella = new System.Windows.Forms.Button();
             this.pb_huella = new System.Windows.Forms.PictureBox();
             this.btn_foto = new System.Windows.Forms.Button();
             this.pb_Foto = new System.Windows.Forms.PictureBox();
@@ -196,15 +196,15 @@
             this.lblEstatusAutorizado.Size = new System.Drawing.Size(88, 19);
             this.lblEstatusAutorizado.TabIndex = 0;
             // 
-            // txt_huella
+            // btn_huella
             // 
-            this.txt_huella.Location = new System.Drawing.Point(520, 401);
-            this.txt_huella.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_huella.Name = "txt_huella";
-            this.txt_huella.Size = new System.Drawing.Size(74, 40);
-            this.txt_huella.TabIndex = 3;
-            this.txt_huella.Text = "Registrar huella";
-            this.txt_huella.UseVisualStyleBackColor = true;
+            this.btn_huella.Location = new System.Drawing.Point(520, 401);
+            this.btn_huella.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_huella.Name = "btn_huella";
+            this.btn_huella.Size = new System.Drawing.Size(74, 40);
+            this.btn_huella.TabIndex = 3;
+            this.btn_huella.Text = "Registrar huella";
+            this.btn_huella.UseVisualStyleBackColor = true;
             // 
             // pb_huella
             // 
@@ -270,7 +270,7 @@
             this.ClientSize = new System.Drawing.Size(640, 473);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.txt_huella);
+            this.Controls.Add(this.btn_huella);
             this.Controls.Add(this.pb_huella);
             this.Controls.Add(this.btn_foto);
             this.Controls.Add(this.pb_Foto);
@@ -312,7 +312,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblEstatusAutorizado;
-        private System.Windows.Forms.Button txt_huella;
+        private System.Windows.Forms.Button btn_huella;
         private System.Windows.Forms.PictureBox pb_huella;
         private System.Windows.Forms.Button btn_foto;
         private System.Windows.Forms.PictureBox pb_Foto;

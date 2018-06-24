@@ -18,12 +18,14 @@ namespace Sistema_Guarderia.Registros
         byte[] imagenBytes;
         CNegocios logica;
         string opcion = string.Empty;
+        CPersona autorizado;
 
-        public RegistrarAutorizados(string opcion)
+        public RegistrarAutorizados(string opcion, CPersona autorizado = null)
         {
             InitializeComponent();
             logica = new CNegocios();
             this.opcion = opcion;
+            this.autorizado = autorizado;
         }
 
         private void RegistrarAutorizados_Load(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace Sistema_Guarderia.Registros
                 this.lblEstatusAutorizado.Text =  "Modificar";
                 this.lblEstatusAutorizado.TextAlign = ContentAlignment.BottomCenter;
                 this.guardarToolStripMenuItem.Enabled = false;
+                this.btn_foto.Text = "Recapturar forografía";
+                this.btn_huella.Text = "Recapturar huella";
             }
 
             InicializaGridNinios();
@@ -53,7 +57,7 @@ namespace Sistema_Guarderia.Registros
             if (!string.IsNullOrWhiteSpace(dialog.SafeFileName))
             {
                 //Tomando la imagen
-                this.imagenBytes = this.logica.ObtieneImagenEnArregloBytes(dialog.FileName);
+                this.imagenBytes = this.logica.ConvierteImagenEnArregloBytes(dialog.FileName);
                 //mostrando en el picturebox
                 this.pb_Foto.Image = Image.FromFile(dialog.FileName);
                 this.pb_Foto.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -102,8 +106,8 @@ namespace Sistema_Guarderia.Registros
                             nombre = this.txt_nombres.Text,
                             apellidoPaterno = this.txt_ApePat.Text,
                             apellidoMaterno = this.txt_ApeMat.Text,
-                            imagenHuella = encoding.GetBytes("Dedo falso"),
-                            fotografia = this.imagenBytes
+                            imagenHuellaArray = encoding.GetBytes("Dedo falso"),
+                            fotografiaArray = this.imagenBytes
                         };
 
                         string resp = logica.GuardaImformacionAutorizados(ref autorizado, listaNinios);
