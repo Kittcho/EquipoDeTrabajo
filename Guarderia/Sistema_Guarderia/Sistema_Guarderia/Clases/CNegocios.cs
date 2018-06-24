@@ -21,23 +21,25 @@ namespace Sistema_Guarderia.Clases
             this.conexion = new PgConexion();
         }
 
-        public DataTable LlenaGridAutorizados()
-        {
-            return new DataTable();
-        }
-
         /// <summary>
         /// Convierte una imagen en arreglo de bytes
         /// </summary>
         /// <param name="path">Ruta de la imagen</param>
         /// <returns>La imagen convertida en arreglo de bytes</returns>
-        public byte[] ObtieneImagenEnArregloBytes(string path)
+        public byte[] ConvierteImagenEnArregloBytes(string path)
         {
-            Image imagen = Image.FromFile(path);
-            using (var ms = new MemoryStream())
+            try
             {
-                imagen.Save(ms, imagen.RawFormat);
-                return ms.GetBuffer();
+                Image imagen = Image.FromFile(path);
+                using (var ms = new MemoryStream())
+                {
+                    imagen.Save(ms, imagen.RawFormat);
+                    return ms.GetBuffer();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -54,57 +56,64 @@ namespace Sistema_Guarderia.Clases
             controlVacio = null;
             bool respuesta = true;
 
-            foreach (var control in controles)
+            try
             {
-                if (control.GetType().Name.Equals("GroupBox"))
+                foreach (var control in controles)
                 {
-                    foreach (var item in (control as GroupBox).Controls)
+                    if (control.GetType().Name.Equals("GroupBox"))
                     {
-                        if (item.GetType().Name.Equals("TextBox"))
+                        foreach (var item in (control as GroupBox).Controls)
                         {
-                            if (string.IsNullOrWhiteSpace((item as TextBox).Text))
+                            if (item.GetType().Name.Equals("TextBox"))
                             {
-                                controlVacio = item as TextBox;
-                                respuesta = false;
-                                mensaje = "Favor de llenar completamente el formulario";
-                                break;
+                                if (string.IsNullOrWhiteSpace((item as TextBox).Text))
+                                {
+                                    controlVacio = item as TextBox;
+                                    respuesta = false;
+                                    mensaje = "Favor de llenar completamente el formulario";
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (!respuesta)
-                    {
-                        break;
-                    }
-                }
-                else if (control.GetType().Name.Equals("PictureBox"))
-                {
-                    if ((control as PictureBox).Image == null)
-                    {
-                        //TODO:Codigó por miestras esta la huella, cuendo este la huella este se debe eliminar y descomentar el de abajo
-                        mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
-                        if ((control as PictureBox).Name.Equals("pb_Foto"))
+                        if (!respuesta)
                         {
-                            mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
-                            controlVacio = control as PictureBox;
-                            respuesta = false;
                             break;
                         }
+                    }
+                    else if (control.GetType().Name.Equals("PictureBox"))
+                    {
+                        if ((control as PictureBox).Image == null)
+                        {
+                            //TODO:Codigó por miestras esta la huella, cuendo este la huella este se debe eliminar y descomentar el de abajo
+                            mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
+                            if ((control as PictureBox).Name.Equals("pb_Foto"))
+                            {
+                                mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
+                                controlVacio = control as PictureBox;
+                                respuesta = false;
+                                break;
+                            }
 
-                        //TODO:Cuando se pueda capturar la huella este código será el que se utilizará
-                        //if ((control as PictureBox).Name.Equals("pb_Foto"))
-                        //{
-                        //    mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
-                        //}
-                        //else if((control as PictureBox).Name.Equals("pb_huella"))
-                        //{
-                        //    mensaje = "Favor de cargar la huella de la persona autorizada a recoger niño(s)";
-                        //}
+                            //TODO:Cuando se pueda capturar la huella este código será el que se utilizará
+                            //if ((control as PictureBox).Name.Equals("pb_Foto"))
+                            //{
+                            //    mensaje = "Favor de cargar la imagen de la persona autorizada a recoger niño(s)";
+                            //}
+                            //else if((control as PictureBox).Name.Equals("pb_huella"))
+                            //{
+                            //    mensaje = "Favor de cargar la huella de la persona autorizada a recoger niño(s)";
+                            //}
 
-                        //controlVacio = control as PictureBox;
-                        //respuesta = false;
-                        //break;
+                            //controlVacio = control as PictureBox;
+                            //respuesta = false;
+                            //break;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                throw;
             }
             return respuesta;
         }
@@ -123,7 +132,7 @@ namespace Sistema_Guarderia.Clases
 
             try
             {
-                int idFoto = GuardaImagen(autorizado.fotografia);
+                int idFoto = GuardaImagen(autorizado.fotografiaArray);
 
                 if (idFoto != -1)
                 {
@@ -176,13 +185,88 @@ namespace Sistema_Guarderia.Clases
         /// <returns>Listado de niños con si id y nombre de su padre registrado</returns>
         public DataTable ConsultaNinios()
         {
-            return conexion.Consulta(@"SELECT ninios.id_ninio, ninios.cnombres||' '||ninios.capellidopat||' '||ninios.capellidomat AS NombreNinio, 
+            try
+            {
+                return conexion.Consulta(@"SELECT ninios.id_ninio, ninios.cnombres||' '||ninios.capellidopat||' '||ninios.capellidomat AS NombreNinio, 
                                      padres.cnombres||' '||padres.capellidopat||' '||padres.capellidomat AS NombreTutor 
                                      FROM reg_ninios ninios 
                                      INNER JOIN reg_personas padres 
                                      ON ninios.id_persona = padres.id_persona 
                                      WHERE ninios.bactivo = '1' 
                                      ORDER BY ninios.id_ninio;");
+            }
+            catch (Exception)
+            {   
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Consulta todos loa autorizados activos y sus ninos registrados
+        /// </summary>
+        /// <returns>Información de los Autorizados</returns>
+        public DataTable ConsultaAutorizados()
+        {
+            try
+            {
+                return conexion.Consulta(@"SELECT autorizado.id_autorizado
+                                              ,ninio.id_ninio
+                                              ,autorizado.id_foto
+                                              ,autorizado.cnombres || ' ' || autorizado.capellidopat || ' ' || autorizado.capellidomat AS NombreAutorizado
+                                              ,ninio.cnombres || ' ' || ninio.capellidopat || ' ' || ninio.capellidomat AS NombreNinio
+                                              ,autorizado.dfechaultimaactualizacion
+                                       FROM reg_autorizado autorizado
+                                       INNER JOIN reg_ninios ninio
+                                       ON autorizado.id_ninio = ninio.id_ninio
+                                       WHERE autorizado.bactivo = '1'
+                                       ORDER BY autorizado.id_foto");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable ConsultaAutorizados(int id)
+        {
+            try
+            {
+                return conexion.Consulta(@"SELECT autorizado.id_autorizado
+                                              ,ninio.id_ninio
+                                              ,autorizado.id_foto
+                                              ,autorizado.cnombres || ' ' || autorizado.capellidopat || ' ' || autorizado.capellidomat AS NombreAutorizado
+                                              ,ninio.cnombres || ' ' || ninio.capellidopat || ' ' || ninio.capellidomat AS NombreNinio
+                                              ,autorizado.dfechaultimaactualizacion
+                                       FROM reg_autorizado autorizado
+                                       INNER JOIN reg_ninios ninio
+                                       ON autorizado.id_ninio = ninio.id_ninio
+                                       WHERE autorizado.bactivo = '1'
+                                       ORDER BY autorizado.id_foto");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Consulta la imagen ligada al id proporcionado
+        /// </summary>
+        /// <param name="id">Id a consultar</param>
+        /// <returns>Imagen</returns>
+        public Image ObtieneImagenPorId(int id)
+        {
+            try
+            {
+                var imagenEnBytes = conexion.ConsultaImagen(string.Format("SELECT imagen FROM reg_fotos WHERE id_foto = {0}", id));
+                MemoryStream ms = new MemoryStream(imagenEnBytes);
+                Image devolverImagen = Image.FromStream(ms);
+                return devolverImagen;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
