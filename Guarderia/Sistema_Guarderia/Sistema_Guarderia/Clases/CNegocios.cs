@@ -212,36 +212,18 @@ namespace Sistema_Guarderia.Clases
                 return conexion.Consulta(@"SELECT autorizado.id_autorizado
                                               ,ninio.id_ninio
                                               ,autorizado.id_foto
-                                              ,autorizado.cnombres || ' ' || autorizado.capellidopat || ' ' || autorizado.capellidomat AS NombreAutorizado
+                                              ,autorizado.cnombres
+                                              ,autorizado.capellidopat
+                                              ,autorizado.capellidomat
+                                              ,autorizado.bactivo
+                                              ,autorizado.cnombres || ' ' || autorizado.capellidopat || ' ' || autorizado.capellidomat AS NombreAutorizadoCompleto
                                               ,ninio.cnombres || ' ' || ninio.capellidopat || ' ' || ninio.capellidomat AS NombreNinio
+                                              ,CASE WHEN autorizado.bactivo = '1' THEN 'Activo' ELSE 'Baja' END  AS estatus                                            
                                               ,autorizado.dfechaultimaactualizacion
                                        FROM reg_autorizado autorizado
                                        INNER JOIN reg_ninios ninio
                                        ON autorizado.id_ninio = ninio.id_ninio
-                                       WHERE autorizado.bactivo = '1'
-                                       ORDER BY autorizado.id_foto");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public DataTable ConsultaAutorizados(int id)
-        {
-            try
-            {
-                return conexion.Consulta(@"SELECT autorizado.id_autorizado
-                                              ,ninio.id_ninio
-                                              ,autorizado.id_foto
-                                              ,autorizado.cnombres || ' ' || autorizado.capellidopat || ' ' || autorizado.capellidomat AS NombreAutorizado
-                                              ,ninio.cnombres || ' ' || ninio.capellidopat || ' ' || ninio.capellidomat AS NombreNinio
-                                              ,autorizado.dfechaultimaactualizacion
-                                       FROM reg_autorizado autorizado
-                                       INNER JOIN reg_ninios ninio
-                                       ON autorizado.id_ninio = ninio.id_ninio
-                                       WHERE autorizado.bactivo = '1'
-                                       ORDER BY autorizado.id_foto");
+                                       ORDER BY autorizado.bactivo desc, autorizado.capellidopat");
             }
             catch (Exception)
             {
@@ -262,6 +244,18 @@ namespace Sistema_Guarderia.Clases
                 MemoryStream ms = new MemoryStream(imagenEnBytes);
                 Image devolverImagen = Image.FromStream(ms);
                 return devolverImagen;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int CambiaEstatusAutorizados(int idFoto, bool activo)
+        {
+            try
+            {
+                return conexion.NonQuery(string.Format("UPDATE reg_autorizado SET bactivo = '{0}' WHERE id_foto = {1}", Convert.ToInt16(activo), idFoto));
             }
             catch (Exception)
             {
