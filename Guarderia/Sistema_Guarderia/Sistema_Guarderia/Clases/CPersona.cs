@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace Sistema_Guarderia.Clases
 {
     public class CPersona
     {
-        public byte estado { get; set; }//1 = autorizado/nuevo, 0 = bloqueado
+        public BitArray estado { get; set; }//1 = autorizado/nuevo, 0 = bloqueado
+        public string estadoStr { get; set; }
         public int id_persona { get; set; }
         public int id_foto { get; set; }
         public string nombre { get; set; }
@@ -25,6 +27,6 @@ namespace Sistema_Guarderia.Clases
         public byte[] imagenHuellaArray { get; set; }
         public Image fotografiaImage { get; set; }
         //Datos niños
-        public int id_ninio { get; set; }
+        public List<int> listaIdNinios { get; set; }
     }
 }

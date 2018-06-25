@@ -19,6 +19,8 @@ namespace Sistema_Guarderia.Registros
         CNegocios logica;
         string opcion = string.Empty;
         CPersona autorizado;
+        bool imagenModificada = false;
+        bool textoModificado = false;
 
         public RegistrarAutorizados(string opcion, CPersona autorizado = null)
         {
@@ -35,17 +37,24 @@ namespace Sistema_Guarderia.Registros
                  this.lblEstatusAutorizado.Text =  "Nuevo";
                  this.lblEstatusAutorizado.TextAlign = ContentAlignment.BottomCenter;
                  this.activarDarDeBajaToolStripMenuItem.Enabled = false;
+                InicializaGridNinios();
             }
             else if (this.opcion.Equals("Cambios"))
             {
-                this.lblEstatusAutorizado.Text =  "Modificar";
+                this.lblEstatusAutorizado.Text = this.autorizado.estadoStr;
                 this.lblEstatusAutorizado.TextAlign = ContentAlignment.BottomCenter;
                 this.guardarToolStripMenuItem.Enabled = false;
                 this.btn_foto.Text = "Recapturar forografía";
                 this.btn_huella.Text = "Recapturar huella";
+                this.txt_nombres.Text = this.autorizado.nombre;
+                this.txt_ApePat.Text = this.autorizado.apellidoPaterno;
+                this.txt_ApeMat.Text = this.autorizado.apellidoMaterno;
+                this.pb_Foto.Image = this.autorizado.fotografiaImage;
+                InicializaGridNinios(this.autorizado.listaIdNinios);
             }
-
-            InicializaGridNinios();
+            this.gbInfoBasica.Enabled = false;
+            this.gbNinios.Enabled = false;
+            this.modificarToolStripMenuItem.Enabled = false;
         }
 
         private void btn_foto_Click(object sender, EventArgs e)
@@ -100,25 +109,38 @@ namespace Sistema_Guarderia.Registros
                     }
                     else
                     {
-                        UTF8Encoding encoding = new UTF8Encoding();
-                        CPersona autorizado = new CPersona()
+                        if (lblEstatusAutorizado.Text.Trim().Equals("Nuevo"))
                         {
-                            nombre = this.txt_nombres.Text,
-                            apellidoPaterno = this.txt_ApePat.Text,
-                            apellidoMaterno = this.txt_ApeMat.Text,
-                            imagenHuellaArray = encoding.GetBytes("Dedo falso"),
-                            fotografiaArray = this.imagenBytes
-                        };
+                            CPersona autorizado = new CPersona()
+                            {
+                                nombre = this.txt_nombres.Text,
+                                apellidoPaterno = this.txt_ApePat.Text,
+                                apellidoMaterno = this.txt_ApeMat.Text,
+                                imagenHuellaArray = new UTF8Encoding().GetBytes("Dedo falso"),
+                                fotografiaArray = this.imagenBytes
+                            };
 
-                        string resp = logica.GuardaImformacionAutorizados(ref autorizado, listaNinios);
-                        if (resp.Equals("Completado"))
-                        {
-                            MessageBox.Show("Se registraron los datos correctamente.", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LimpiaFormulario();
+                            string resp = logica.GuardaImformacionAutorizados(ref autorizado, listaNinios);
+                            if (resp.Equals("Completado"))
+                            {
+                                MessageBox.Show("Se registraron los datos correctamente.", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LimpiaFormulario();
+                            }
+                            else
+                            {
+                                MessageBox.Show(resp, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
+                        else if (lblEstatusAutorizado.Text.Trim().Equals("Activo"))
                         {
-                            MessageBox.Show(resp, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (this.textoModificado)
+                            {
+                                
+                            }
+                            if (this.imagenModificada)
+                            {
+                                
+                            }
                         }
                     }
                 }
@@ -152,6 +174,93 @@ namespace Sistema_Guarderia.Registros
             }
         }
 
+        private void activarDarDeBajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string mensaje = string.Empty;
+            if (Convert.ToBoolean(autorizado.estado[0]))
+            {
+                mensaje = string.Format("¿Esta seguro(a) de querer dar de baja a la persona <{0} {1} {2}> como autorizado para recoger niño(s)?", this.txt_nombres.Text, txt_ApePat.Text, this.txt_ApeMat.Text);
+            }
+            else
+            {
+                mensaje = string.Format("¿Esta seguro(a) de querer activar a la persona <{0} {1} {2}> como autorizado para recoger niño(s) de nuevo?", this.txt_nombres.Text, txt_ApePat.Text, this.txt_ApeMat.Text);
+            }
+
+            DialogResult respuesta = MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.OK)
+            {
+                int registros = logica.CambiaEstatusAutorizados(autorizado.id_foto, !Convert.ToBoolean(autorizado.estado[0]));
+                if (registros > 0)
+                {
+                    MessageBox.Show("Persona actualizada correctamente", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+        }
+
+        private void informaciónBasicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (informaciónBasicaToolStripMenuItem.Checked)
+            {
+                this.gbInfoBasica.Enabled = true;
+                this.niñosAsignadosToolStripMenuItem.Checked = false;
+                this.ambosToolStripMenuItem.Checked = false;
+                this.gbNinios.Enabled = false;
+            }
+            else
+            {
+                this.gbInfoBasica.Enabled = false;
+            }
+        }
+
+        private void niñosAsignadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (niñosAsignadosToolStripMenuItem.Checked)
+            {
+                this.gbNinios.Enabled = true;
+                this.informaciónBasicaToolStripMenuItem.Checked = false;
+                this.ambosToolStripMenuItem.Checked = false;
+                this.gbInfoBasica.Enabled = false;
+            }
+            else
+            {
+                this.gbNinios.Enabled = false;
+            }
+        }
+
+        private void ambosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ambosToolStripMenuItem.Checked)
+            {
+                this.gbInfoBasica.Enabled = true;
+                this.gbNinios.Enabled = true;
+                this.informaciónBasicaToolStripMenuItem.Checked = false;
+                this.niñosAsignadosToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                this.gbInfoBasica.Enabled = false;
+                this.gbNinios.Enabled = false;
+            }
+        }
+
+        private void opcionesToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+        {
+            if (lblEstatusAutorizado.Text.Trim().Equals("Activo"))
+            {
+                this.modificarToolStripMenuItem.Enabled = true;
+
+                if (this.gbInfoBasica.Enabled && ValidaSiExistenCambiosInfoBasica(ref this.imagenModificada, ref this.textoModificado))
+                {
+                    this.guardarToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    this.guardarToolStripMenuItem.Enabled = false;
+                }
+            }
+        }
+
         /// <summary>
         /// Inicializa y formatea los valores del grid
         /// </summary>
@@ -173,6 +282,43 @@ namespace Sistema_Guarderia.Registros
             dgvNinios.Columns["nombreninio"].ReadOnly = true;
             dgvNinios.Columns["nombretutor"].ReadOnly = true;
             dgvNinios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        /// <summary>
+        /// Muestra marcados en el grid los niños asociados al autorizado
+        /// </summary>
+        /// <param name="listaNinios">Lista de niños relacionados a la persona</param>
+        private void InicializaGridNinios(List<int> listaNinios)
+        {
+            dgvNinios.DataSource = logica.ConsultaNinios();
+            dgvNinios.Columns.Insert(0, new DataGridViewCheckBoxColumn());
+            dgvNinios.Columns[0].HeaderText = "Selección";
+            dgvNinios.Columns[0].Name = "ChkNinio";
+            dgvNinios.Columns["nombreninio"].HeaderText = "Niños inscritos";
+            dgvNinios.Columns["nombretutor"].HeaderText = "Padre/Tutor responsable";
+            dgvNinios.Columns["id_ninio"].Visible = false;
+            dgvNinios.Columns["ChkNinio"].Width = 60;
+            dgvNinios.Columns["nombreninio"].Width = 200;
+            dgvNinios.Columns["nombretutor"].Width = 200;
+            dgvNinios.Columns["nombreninio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["nombretutor"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["ChkNinio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dgvNinios.Columns["nombreninio"].ReadOnly = true;
+            dgvNinios.Columns["nombretutor"].ReadOnly = true;
+            dgvNinios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            foreach (DataGridViewRow row in dgvNinios.Rows)
+            {
+                foreach (int idNinio in listaNinios)
+                {
+                    if (Convert.ToInt32(row.Cells["id_ninio"].Value) == idNinio)
+                    {
+                        DataGridViewCheckBoxCell cellSelecion = row.Cells["ChkNinio"] as DataGridViewCheckBoxCell;
+                        cellSelecion.Value = true;
+                        continue;
+                    } 
+                }
+            }
         }
 
         /// <summary>
@@ -229,6 +375,30 @@ namespace Sistema_Guarderia.Registros
                 DataGridViewCheckBoxCell cellSelecion = row.Cells["ChkNinio"] as DataGridViewCheckBoxCell;
                 cellSelecion.Value = false;
             }
+        }
+
+        /// <summary>
+        /// Valida si fueron afectados los campos de datos personales, su foto o ambos
+        /// </summary>
+        /// <param name="imagenModificada"></param>
+        /// <param name="textoModificado"></param>
+        /// <returns></returns>
+        private bool ValidaSiExistenCambiosInfoBasica(ref bool imagenModificada, ref bool textoModificado)
+        {
+            bool resp = false;
+
+            if (!this.autorizado.nombre.Equals(txt_nombres.Text.Trim()) || !this.autorizado.apellidoPaterno.Equals(txt_ApePat.Text.Trim()) || !this.autorizado.apellidoMaterno.Equals(txt_ApeMat.Text.Trim()))
+            {
+                resp = true;
+                this.textoModificado = true;
+            }
+
+            if (!this.autorizado.fotografiaImage.Equals(this.pb_Foto.Image))
+            {
+                resp = true;
+                this.imagenModificada = true;
+            }
+            return resp;
         }
     }
 }
