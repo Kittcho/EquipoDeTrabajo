@@ -43,6 +43,22 @@ namespace Sistema_Guarderia.Clases
             }
         }
 
+        public byte[] ConvierteImagenEnArregloBytes(Image imagen)
+        {
+            try
+            {
+                using (var ms = new MemoryStream())
+                {
+                    imagen.Save(ms, imagen.RawFormat);
+                    return ms.GetBuffer();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// Valida los controles que se encuentran en la forma
         /// </summary>
@@ -261,6 +277,17 @@ namespace Sistema_Guarderia.Clases
             {
                 throw;
             }
+        }
+
+        public int ActualizaInformacionBasica(CPersona autorizado)
+        {
+            return conexion.NonQuery(string.Format(@"UPDATE reg_autorizado SET cnombres = '{0}', capellidopat = '{1}', capellidomat = '{2}', dfechaultimaactualizacion = now()
+                                                     WHERE id_foto = {3}",autorizado.nombre, autorizado.apellidoPaterno, autorizado.apellidoMaterno,autorizado.id_foto));
+        }
+
+        public int ActualizaImagen(CPersona autorizado)
+        {
+            return conexion.ActualizaImagenConexion(autorizado);
         }
     }
 }

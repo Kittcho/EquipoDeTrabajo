@@ -70,6 +70,7 @@
     <Compile Include="Consultas\ConsultaAutorizados.Designer.cs">
       <DependentUpon>ConsultaAutorizados.cs</DependentUpon>
     </Compile>
+    <Compile Include="enumeradores\ActualizarCambiosGuardados.cs" />
     <Compile Include="Registros\RegistrarAutorizados.cs">
       <SubType>Form</SubType>
     </Compile>

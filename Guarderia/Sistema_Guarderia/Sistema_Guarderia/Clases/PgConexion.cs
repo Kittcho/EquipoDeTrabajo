@@ -228,6 +228,30 @@ namespace Sistema_Guarderia.Clases
             return idFoto;
         }
 
+        public int ActualizaImagenConexion(CPersona autorizado)
+        {
+            int registros = 0;
+            try
+            {
+                using (PgSqlConnection connection = new PgSqlConnection(this.sConexion))
+                {
+                    connection.Open();
+                    PgSqlCommand command = new PgSqlCommand(@"UPDATE reg_fotos SET imagen = @imagen WHERE id_foto = @id_foto", connection);
+                    command.Parameters.Add("@imagen", PgSqlType.ByteA, autorizado.imagenHuellaArray.Length).Value = autorizado.imagenHuellaArray;
+                    command.Parameters.Add("@id_foto", PgSqlType.Int).Value = autorizado.id_foto;
+                    command.CommandType = CommandType.Text;
+                    registros = command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return registros;
+        }
+
         public byte[] ConsultaImagen(string sConsulta)
         {
             byte[] valor;

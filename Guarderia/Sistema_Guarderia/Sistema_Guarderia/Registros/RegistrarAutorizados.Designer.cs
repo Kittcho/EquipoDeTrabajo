@@ -31,27 +31,27 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activarDarDeBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informaciónBasicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.niñosAsignadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ambosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbInfoBasica = new System.Windows.Forms.GroupBox();
+            this.btn_foto = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.btn_huella = new System.Windows.Forms.Button();
             this.txt_nombres = new System.Windows.Forms.TextBox();
+            this.pb_huella = new System.Windows.Forms.PictureBox();
             this.txt_ApePat = new System.Windows.Forms.TextBox();
             this.txt_ApeMat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pb_Foto = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblEstatusAutorizado = new System.Windows.Forms.Label();
-            this.btn_huella = new System.Windows.Forms.Button();
-            this.pb_huella = new System.Windows.Forms.PictureBox();
-            this.btn_foto = new System.Windows.Forms.Button();
-            this.pb_Foto = new System.Windows.Forms.PictureBox();
             this.gbNinios = new System.Windows.Forms.GroupBox();
             this.dgvNinios = new System.Windows.Forms.DataGridView();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.niñosAsignadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informaciónBasicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ambosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.gbInfoBasica.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_huella)).BeginInit();
@@ -91,19 +91,53 @@
             this.opcionesToolStripMenuItem.Text = "Opciones";
             this.opcionesToolStripMenuItem.DropDownOpened += new System.EventHandler(this.opcionesToolStripMenuItem_DropDownOpened);
             // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
-            // 
             // activarDarDeBajaToolStripMenuItem
             // 
             this.activarDarDeBajaToolStripMenuItem.Name = "activarDarDeBajaToolStripMenuItem";
             this.activarDarDeBajaToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.activarDarDeBajaToolStripMenuItem.Text = "Activar/Dar de baja";
             this.activarDarDeBajaToolStripMenuItem.Click += new System.EventHandler(this.activarDarDeBajaToolStripMenuItem_Click);
+            // 
+            // modificarToolStripMenuItem
+            // 
+            this.modificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informaciónBasicaToolStripMenuItem,
+            this.niñosAsignadosToolStripMenuItem,
+            this.ambosToolStripMenuItem});
+            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.modificarToolStripMenuItem.Text = "Modificar";
+            // 
+            // informaciónBasicaToolStripMenuItem
+            // 
+            this.informaciónBasicaToolStripMenuItem.CheckOnClick = true;
+            this.informaciónBasicaToolStripMenuItem.Name = "informaciónBasicaToolStripMenuItem";
+            this.informaciónBasicaToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.informaciónBasicaToolStripMenuItem.Text = "Información Basica";
+            this.informaciónBasicaToolStripMenuItem.Click += new System.EventHandler(this.informaciónBasicaToolStripMenuItem_Click);
+            // 
+            // niñosAsignadosToolStripMenuItem
+            // 
+            this.niñosAsignadosToolStripMenuItem.CheckOnClick = true;
+            this.niñosAsignadosToolStripMenuItem.Name = "niñosAsignadosToolStripMenuItem";
+            this.niñosAsignadosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.niñosAsignadosToolStripMenuItem.Text = "Niño(s) asignados";
+            this.niñosAsignadosToolStripMenuItem.Click += new System.EventHandler(this.niñosAsignadosToolStripMenuItem_Click);
+            // 
+            // ambosToolStripMenuItem
+            // 
+            this.ambosToolStripMenuItem.CheckOnClick = true;
+            this.ambosToolStripMenuItem.Name = "ambosToolStripMenuItem";
+            this.ambosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.ambosToolStripMenuItem.Text = "Ambos";
+            this.ambosToolStripMenuItem.Click += new System.EventHandler(this.ambosToolStripMenuItem_Click);
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // gbInfoBasica
             // 
@@ -128,6 +162,17 @@
             this.gbInfoBasica.TabStop = false;
             this.gbInfoBasica.Text = "Información Básica";
             // 
+            // btn_foto
+            // 
+            this.btn_foto.Location = new System.Drawing.Point(26, 146);
+            this.btn_foto.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_foto.Name = "btn_foto";
+            this.btn_foto.Size = new System.Drawing.Size(74, 40);
+            this.btn_foto.TabIndex = 3;
+            this.btn_foto.Text = "Seleccionar Fotografía";
+            this.btn_foto.UseVisualStyleBackColor = true;
+            this.btn_foto.Click += new System.EventHandler(this.btn_foto_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -138,6 +183,16 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Estatus Autorizado";
             // 
+            // btn_huella
+            // 
+            this.btn_huella.Location = new System.Drawing.Point(508, 146);
+            this.btn_huella.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_huella.Name = "btn_huella";
+            this.btn_huella.Size = new System.Drawing.Size(74, 40);
+            this.btn_huella.TabIndex = 4;
+            this.btn_huella.Text = "Registrar huella";
+            this.btn_huella.UseVisualStyleBackColor = true;
+            // 
             // txt_nombres
             // 
             this.txt_nombres.Location = new System.Drawing.Point(229, 61);
@@ -145,8 +200,18 @@
             this.txt_nombres.MaxLength = 100;
             this.txt_nombres.Name = "txt_nombres";
             this.txt_nombres.Size = new System.Drawing.Size(252, 20);
-            this.txt_nombres.TabIndex = 1;
+            this.txt_nombres.TabIndex = 0;
             this.txt_nombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombres_KeyPress);
+            // 
+            // pb_huella
+            // 
+            this.pb_huella.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pb_huella.Location = new System.Drawing.Point(498, 17);
+            this.pb_huella.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_huella.Name = "pb_huella";
+            this.pb_huella.Size = new System.Drawing.Size(102, 122);
+            this.pb_huella.TabIndex = 31;
+            this.pb_huella.TabStop = false;
             // 
             // txt_ApePat
             // 
@@ -155,7 +220,7 @@
             this.txt_ApePat.MaxLength = 50;
             this.txt_ApePat.Name = "txt_ApePat";
             this.txt_ApePat.Size = new System.Drawing.Size(252, 20);
-            this.txt_ApePat.TabIndex = 2;
+            this.txt_ApePat.TabIndex = 1;
             this.txt_ApePat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ApePat_KeyPress);
             // 
             // txt_ApeMat
@@ -165,7 +230,7 @@
             this.txt_ApeMat.MaxLength = 50;
             this.txt_ApeMat.Name = "txt_ApeMat";
             this.txt_ApeMat.Size = new System.Drawing.Size(252, 20);
-            this.txt_ApeMat.TabIndex = 3;
+            this.txt_ApeMat.TabIndex = 2;
             this.txt_ApeMat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ApeMat_KeyPress);
             // 
             // label1
@@ -177,6 +242,17 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Nombre(s)";
+            // 
+            // pb_Foto
+            // 
+            this.pb_Foto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pb_Foto.Location = new System.Drawing.Point(15, 17);
+            this.pb_Foto.Margin = new System.Windows.Forms.Padding(2);
+            this.pb_Foto.Name = "pb_Foto";
+            this.pb_Foto.Size = new System.Drawing.Size(102, 122);
+            this.pb_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Foto.TabIndex = 29;
+            this.pb_Foto.TabStop = false;
             // 
             // label2
             // 
@@ -207,48 +283,6 @@
             this.lblEstatusAutorizado.Size = new System.Drawing.Size(88, 19);
             this.lblEstatusAutorizado.TabIndex = 0;
             // 
-            // btn_huella
-            // 
-            this.btn_huella.Location = new System.Drawing.Point(508, 146);
-            this.btn_huella.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_huella.Name = "btn_huella";
-            this.btn_huella.Size = new System.Drawing.Size(74, 40);
-            this.btn_huella.TabIndex = 3;
-            this.btn_huella.Text = "Registrar huella";
-            this.btn_huella.UseVisualStyleBackColor = true;
-            // 
-            // pb_huella
-            // 
-            this.pb_huella.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pb_huella.Location = new System.Drawing.Point(498, 17);
-            this.pb_huella.Margin = new System.Windows.Forms.Padding(2);
-            this.pb_huella.Name = "pb_huella";
-            this.pb_huella.Size = new System.Drawing.Size(102, 122);
-            this.pb_huella.TabIndex = 31;
-            this.pb_huella.TabStop = false;
-            // 
-            // btn_foto
-            // 
-            this.btn_foto.Location = new System.Drawing.Point(26, 146);
-            this.btn_foto.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_foto.Name = "btn_foto";
-            this.btn_foto.Size = new System.Drawing.Size(74, 40);
-            this.btn_foto.TabIndex = 2;
-            this.btn_foto.Text = "Seleccionar Fotografía";
-            this.btn_foto.UseVisualStyleBackColor = true;
-            this.btn_foto.Click += new System.EventHandler(this.btn_foto_Click);
-            // 
-            // pb_Foto
-            // 
-            this.pb_Foto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pb_Foto.Location = new System.Drawing.Point(15, 17);
-            this.pb_Foto.Margin = new System.Windows.Forms.Padding(2);
-            this.pb_Foto.Name = "pb_Foto";
-            this.pb_Foto.Size = new System.Drawing.Size(102, 122);
-            this.pb_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_Foto.TabIndex = 29;
-            this.pb_Foto.TabStop = false;
-            // 
             // gbNinios
             // 
             this.gbNinios.Controls.Add(this.dgvNinios);
@@ -272,42 +306,8 @@
             this.dgvNinios.Name = "dgvNinios";
             this.dgvNinios.RowHeadersVisible = false;
             this.dgvNinios.Size = new System.Drawing.Size(607, 273);
-            this.dgvNinios.TabIndex = 1;
+            this.dgvNinios.TabIndex = 0;
             this.dgvNinios.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvNinios_CurrentCellDirtyStateChanged);
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informaciónBasicaToolStripMenuItem,
-            this.niñosAsignadosToolStripMenuItem,
-            this.ambosToolStripMenuItem});
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
-            // 
-            // niñosAsignadosToolStripMenuItem
-            // 
-            this.niñosAsignadosToolStripMenuItem.CheckOnClick = true;
-            this.niñosAsignadosToolStripMenuItem.Name = "niñosAsignadosToolStripMenuItem";
-            this.niñosAsignadosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.niñosAsignadosToolStripMenuItem.Text = "Niño(s) asignados";
-            this.niñosAsignadosToolStripMenuItem.Click += new System.EventHandler(this.niñosAsignadosToolStripMenuItem_Click);
-            // 
-            // informaciónBasicaToolStripMenuItem
-            // 
-            this.informaciónBasicaToolStripMenuItem.CheckOnClick = true;
-            this.informaciónBasicaToolStripMenuItem.Name = "informaciónBasicaToolStripMenuItem";
-            this.informaciónBasicaToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.informaciónBasicaToolStripMenuItem.Text = "Información Basica";
-            this.informaciónBasicaToolStripMenuItem.Click += new System.EventHandler(this.informaciónBasicaToolStripMenuItem_Click);
-            // 
-            // ambosToolStripMenuItem
-            // 
-            this.ambosToolStripMenuItem.CheckOnClick = true;
-            this.ambosToolStripMenuItem.Name = "ambosToolStripMenuItem";
-            this.ambosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.ambosToolStripMenuItem.Text = "Ambos";
-            this.ambosToolStripMenuItem.Click += new System.EventHandler(this.ambosToolStripMenuItem_Click);
             // 
             // RegistrarAutorizados
             // 

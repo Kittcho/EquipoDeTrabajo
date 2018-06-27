@@ -1,5 +1,6 @@
 ﻿using Sistema_Guarderia.Clases;
 using Sistema_Guarderia.Consultas;
+using Sistema_Guarderia.enumeradores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,14 +134,72 @@ namespace Sistema_Guarderia.Registros
                         }
                         else if (lblEstatusAutorizado.Text.Trim().Equals("Activo"))
                         {
+                            int registrosInfoBasica = -1;
+                            int registrosImagen = -1;
                             if (this.textoModificado)
                             {
-                                
+                                registrosInfoBasica = logica.ActualizaInformacionBasica(new CPersona()
+                                                                                        {
+                                                                                            id_foto = this.autorizado.id_foto,
+                                                                                            nombre = txt_nombres.Text,
+                                                                                            apellidoPaterno = txt_ApePat.Text,
+                                                                                            apellidoMaterno = txt_ApeMat.Text
+                                                                                        });
                             }
                             if (this.imagenModificada)
                             {
-                                
+                                registrosImagen = logica.ActualizaImagen(new CPersona() { 
+                                                                         id_foto = this.autorizado.id_foto,
+                                                                         imagenHuellaArray = logica.ConvierteImagenEnArregloBytes(this.pb_Foto.Image)
+                                                                          });
                             }
+
+                            // Validando si guardo la información
+                            if (this.textoModificado && this.imagenModificada)
+                            {
+                                if (registrosInfoBasica > 0 && registrosImagen > 0)
+                                {
+                                    mensaje = "Todo se actualizo correctamente.";
+                                    ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados.Infoyfoto);
+                                }
+                                else if (registrosInfoBasica > 0)
+                                {
+                                    mensaje = "Solo se guardo la información basica pero ocurrio un problema al intentar guardar la imagen de perfil. Favor de contactar al administrador del sistema";
+                                    ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados.InfoBasica);
+                                }else
+                                {
+                                    mensaje = "Solo se guardo la imagen de perfil pero ocurrio un problema al intentar guardar la información basica. Favor de contactar al administrador del sistema";
+                                    ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados.Fotogragia);
+                                }
+                            }
+                            else if (this.textoModificado)
+                            {
+                                if (registrosInfoBasica > 0)
+                                {
+                                    mensaje = "Se actualizó correctamente la información basica.";
+                                    ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados.InfoBasica);
+                                }
+                                else
+                                {
+                                    mensaje = "Ocurrio un error al intentar guarda la información basica. Favor de contactarse con el administrador del sistema.";
+                                }
+                            }
+                            else if (this.imagenModificada)
+                            {
+                                if (registrosImagen > 0)
+                                {
+                                    mensaje = "Se actualizó correctamente la información imagen de perfil.";
+                                    ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados.Fotogragia);
+                                }
+                                else
+                                {
+                                    mensaje = "Ocurrio un error al intentar guarda la imagen de perfil. Favor de contactarse con el administrador del sistema.";
+                                }
+                            }
+
+                            MessageBox.Show(mensaje,"Información",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.textoModificado = false;
+                            this.imagenModificada = false;
                         }
                     }
                 }
@@ -148,6 +207,38 @@ namespace Sistema_Guarderia.Registros
             catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Mensaje de error: {0}",ex.Message),"Execepción",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarCambiosGuadadosAutorizado(ActualizarCambiosGuardados opcion)
+        {
+            switch (opcion)
+            {
+                case ActualizarCambiosGuardados.InfoBasica:
+                    this.autorizado.nombre = txt_nombres.Text;
+                    this.autorizado.apellidoPaterno = txt_ApePat.Text;
+                    this.autorizado.apellidoMaterno = txt_ApeMat.Text; 
+                break;
+                case ActualizarCambiosGuardados.Fotogragia:
+                    this.autorizado.fotografiaImage = pb_Foto.Image;
+                    this.autorizado.fotografiaArray = logica.ConvierteImagenEnArregloBytes(this.pb_Foto.Image);
+                break;
+                case ActualizarCambiosGuardados.Infoyfoto:
+                    this.autorizado.nombre = txt_nombres.Text;
+                    this.autorizado.apellidoPaterno = txt_ApePat.Text;
+                    this.autorizado.apellidoMaterno = txt_ApeMat.Text; 
+                    this.autorizado.fotografiaImage = pb_Foto.Image;
+                    this.autorizado.fotografiaArray = logica.ConvierteImagenEnArregloBytes(this.pb_Foto.Image);
+                break;
+                case ActualizarCambiosGuardados.ListaNinios:
+                    break;
+                case ActualizarCambiosGuardados.Todo:
+                    this.autorizado.nombre = txt_nombres.Text;
+                    this.autorizado.apellidoPaterno = txt_ApePat.Text;
+                    this.autorizado.apellidoMaterno = txt_ApeMat.Text; 
+                    this.autorizado.fotografiaImage = pb_Foto.Image;
+                    this.autorizado.fotografiaArray = logica.ConvierteImagenEnArregloBytes(this.pb_Foto.Image);
+                    break;
             }
         }
 

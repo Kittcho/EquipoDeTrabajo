@@ -19,9 +19,8 @@ namespace Sistema_Guarderia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MenuPrincipal());
-            //Application.Run(new RegistrarAutorizados("Agregar"));
-            Application.Run(new ConsultaAutorizados());
+            Application.Run(new MenuPrincipal());
+            //Application.Run(new ConsultaAutorizados());
         }
     }
 }
