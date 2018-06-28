@@ -1,4 +1,4 @@
-﻿namespace Sistema_Guarderia.Clientes
+﻿namespace Sistema_Guarderia.Registros
 {
     partial class RegistrarCliente
     {

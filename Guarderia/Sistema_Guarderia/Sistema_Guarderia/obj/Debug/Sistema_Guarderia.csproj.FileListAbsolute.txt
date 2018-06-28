@@ -29,3 +29,20 @@ E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\VsWebSite.I
 E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.xml
 E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.PostgreSql.xml
 E:\Proyectos\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Clientes.RegistrarCliente.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe.config
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.exe
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Sistema_Guarderia.pdb
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\bin\Debug\Devart.Data.PostgreSql.Vs.dll
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Acceso.Acceso_usuario.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Consultas.ConsultaAutorizados.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.Checador.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.ChecadorClientes.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Inicio.ValidaHuella.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.MenuPrincipal.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Properties.Resources.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csproj.GenerateResource.Cache
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.exe
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.pdb
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Registros.RegistrarCliente.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.Registros.RegistrarAutorizados.resources
+E:\Proyectos Github\EquipoDeTrabajo\Guarderia\Sistema_Guarderia\Sistema_Guarderia\obj\Debug\Sistema_Guarderia.csprojResolveAssemblyReference.cache

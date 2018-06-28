@@ -60,8 +60,23 @@
     <Compile Include="Acceso\Acceso_usuario.Designer.cs">
       <DependentUpon>Acceso_usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\CNinio.cs" />
+    <Compile Include="Clases\CPersona.cs" />
     <Compile Include="Clases\CNegocios.cs" />
     <Compile Include="Clases\PgConexion.cs" />
+    <Compile Include="Consultas\ConsultaAutorizados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaAutorizados.Designer.cs">
+      <DependentUpon>ConsultaAutorizados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="enumeradores\ActualizarCambiosGuardados.cs" />
+    <Compile Include="Registros\RegistrarAutorizados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\RegistrarAutorizados.Designer.cs">
+      <DependentUpon>RegistrarAutorizados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registros\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +118,9 @@
     <EmbeddedResource Include="Acceso\Acceso_usuario.resx">
       <DependentUpon>Acceso_usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\ConsultaAutorizados.resx">
+      <DependentUpon>ConsultaAutorizados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio\Checador.resx">
       <DependentUpon>Checador.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +142,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registros\RegistrarAutorizados.resx">
+      <DependentUpon>RegistrarAutorizados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registros\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,7 +163,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

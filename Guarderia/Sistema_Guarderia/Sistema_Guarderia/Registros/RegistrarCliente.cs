@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sistema_Guarderia.Clientes
+namespace Sistema_Guarderia.Registros
 {
     public partial class RegistrarCliente : Form
     {
